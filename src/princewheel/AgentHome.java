@@ -5,6 +5,8 @@
  */
 package princewheel;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author owner
@@ -17,6 +19,7 @@ public class AgentHome extends javax.swing.JFrame {
     public AgentHome() {
         initComponents();
         hidepanels();
+        loadavailablecars();
     }
     void hidepanels(){
     jprequest.setVisible(false);
@@ -25,6 +28,16 @@ public class AgentHome extends javax.swing.JFrame {
     jpcarreport.setVisible(false);
     jpclientreport.setVisible(false);
     
+    }
+    void loadavailablecars(){
+    DefaultTableModel dtm = new DefaultTableModel();
+    dtm.addColumn("CAR TYPE");
+    dtm.addColumn("CAR NUMBER");
+    dtm.addColumn("CURRENT STATE");
+    dtm.addColumn("CAPACITY");
+    dtm.addColumn("INSURANCE EXPIRY");
+    tblavailablecar.setModel(dtm);
+  
     }
 
     /**
@@ -39,7 +52,7 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jpleasenow = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblavailablecar = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -71,8 +84,8 @@ public class AgentHome extends javax.swing.JFrame {
         jpleasenow.setBackground(new java.awt.Color(153, 204, 255));
         jpleasenow.setLayout(null);
 
-        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblavailablecar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblavailablecar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -83,7 +96,7 @@ public class AgentHome extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblavailablecar);
 
         jpleasenow.add(jScrollPane1);
         jScrollPane1.setBounds(30, 340, 1020, 140);
@@ -365,7 +378,6 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem jmcarreport;
     private javax.swing.JMenuItem jmclearlease;
     private javax.swing.JMenuItem jmclientreport;
@@ -377,5 +389,6 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jpclientreport;
     private javax.swing.JPanel jpleasenow;
     private javax.swing.JPanel jprequest;
+    private javax.swing.JTable tblavailablecar;
     // End of variables declaration//GEN-END:variables
 }
