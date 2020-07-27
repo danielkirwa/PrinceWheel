@@ -6,6 +6,7 @@
 package princewheel;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -94,10 +95,10 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
+        cmbcartype = new javax.swing.JComboBox<>();
+        txtstate = new javax.swing.JTextField();
+        txtinsuranceexp = new javax.swing.JTextField();
+        txtcarno = new javax.swing.JTextField();
         btnsearchcar = new javax.swing.JButton();
         btncheckprice = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -186,15 +187,17 @@ public class AgentHome extends javax.swing.JFrame {
         tblavailablecar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblavailablecar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblavailablecar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblavailablecarMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblavailablecar);
 
         jpleasenow.add(jScrollPane1);
@@ -297,15 +300,15 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel4.add(jDateChooser2);
         jDateChooser2.setBounds(110, 200, 190, 20);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(jComboBox2);
-        jComboBox2.setBounds(120, 50, 170, 20);
-        jPanel4.add(jTextField15);
-        jTextField15.setBounds(120, 140, 170, 20);
-        jPanel4.add(jTextField16);
-        jTextField16.setBounds(120, 110, 170, 20);
-        jPanel4.add(jTextField17);
-        jTextField17.setBounds(120, 80, 170, 20);
+        cmbcartype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(cmbcartype);
+        cmbcartype.setBounds(120, 50, 170, 20);
+        jPanel4.add(txtstate);
+        txtstate.setBounds(120, 140, 170, 20);
+        jPanel4.add(txtinsuranceexp);
+        txtinsuranceexp.setBounds(120, 110, 170, 20);
+        jPanel4.add(txtcarno);
+        txtcarno.setBounds(120, 80, 170, 20);
 
         btnsearchcar.setBackground(new java.awt.Color(123, 193, 249));
         btnsearchcar.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
@@ -694,8 +697,14 @@ public class AgentHome extends javax.swing.JFrame {
 
     private void jmlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlogoutActionPerformed
         // TODO add your handling code here:
+        
+        int action = JOptionPane.showConfirmDialog(null,"Are you sure want to Logou ?","PRINCE WHEEL",JOptionPane.YES_NO_OPTION);
+        if(action == JOptionPane.YES_OPTION){
         this.dispose();
         new Loader().setVisible(true);
+        }else{
+        JOptionPane.showMessageDialog(null, "Still loged in","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jmlogoutActionPerformed
 
     private void jmrequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmrequestActionPerformed
@@ -745,6 +754,17 @@ public class AgentHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btncheckpriceActionPerformed
 
+    private void tblavailablecarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblavailablecarMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel)tblavailablecar.getModel();
+        int selectedrowindex = tblavailablecar.getSelectedRow();
+        txtcarno.setText(dtm.getValueAt(selectedrowindex, 1).toString());
+        txtinsuranceexp.setText(dtm.getValueAt(selectedrowindex, 4).toString());
+        txtstate.setText(dtm.getValueAt(selectedrowindex, 2).toString());
+        cmbcartype.setSelectedItem(dtm.getValueAt(selectedrowindex, 0).toString());
+        
+    }//GEN-LAST:event_tblavailablecarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -789,8 +809,8 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JButton btnsearchcar;
     private javax.swing.JButton btnsearchclear;
     private javax.swing.JButton btnsearchexd;
+    private javax.swing.JComboBox<String> cmbcartype;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
@@ -854,9 +874,6 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
@@ -890,5 +907,8 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jpleasenow;
     private javax.swing.JPanel jprequest;
     private javax.swing.JTable tblavailablecar;
+    private javax.swing.JTextField txtcarno;
+    private javax.swing.JTextField txtinsuranceexp;
+    private javax.swing.JTextField txtstate;
     // End of variables declaration//GEN-END:variables
 }

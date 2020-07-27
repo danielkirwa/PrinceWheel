@@ -28,7 +28,7 @@ public class Loader extends javax.swing.JFrame {
         showdate();
         showtime();
     }
-        void loadimages(){
+        final void loadimages(){
      
         ImageIcon img1,img2,img3,img4;
          img1 = new ImageIcon("images/bmv.png");
@@ -41,13 +41,13 @@ public class Loader extends javax.swing.JFrame {
         lbimage4.setIcon(img4);
         
 }
-        void showdate(){
+        final void showdate(){
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         lbdate.setText("Date :" + sdf.format(date));
         
         }
-        void showtime(){
+        final void showtime(){
         new Timer (0, (ActionEvent ae) -> {
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("hh-mm-ss a");
@@ -145,6 +145,11 @@ public class Loader extends javax.swing.JFrame {
         btncreateacount.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
         btncreateacount.setText("CREATE ACCOUNT");
         btncreateacount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btncreateacount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncreateacountActionPerformed(evt);
+            }
+        });
         jPanel3.add(btncreateacount);
         btncreateacount.setBounds(550, 30, 220, 50);
 
@@ -164,6 +169,11 @@ public class Loader extends javax.swing.JFrame {
         btnadmin.setFont(new java.awt.Font("Wide Latin", 0, 14)); // NOI18N
         btnadmin.setText("ADMIN");
         btnadmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnadmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnadminActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnadmin);
         btnadmin.setBounds(10, 20, 150, 50);
 
@@ -221,6 +231,18 @@ public class Loader extends javax.swing.JFrame {
         this.setVisible(false);
         new AgentHome().setVisible(true);
     }//GEN-LAST:event_btnagentActionPerformed
+
+    private void btncreateacountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreateacountActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new CreateAccount().setVisible(true);
+    }//GEN-LAST:event_btncreateacountActionPerformed
+
+    private void btnadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadminActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new AdminHome().setVisible(true);
+    }//GEN-LAST:event_btnadminActionPerformed
 
     /**
      * @param args the command line arguments
