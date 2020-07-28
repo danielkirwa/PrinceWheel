@@ -5,6 +5,7 @@
  */
 package princewheel;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,7 @@ public class AdminHome extends javax.swing.JFrame {
     public AdminHome() {
         initComponents();
         hidecomponets();
+        loadiconsimages();
     }
    final void hidecomponets(){
     jpstaffaccount.setVisible(false);
@@ -29,6 +31,12 @@ public class AdminHome extends javax.swing.JFrame {
     jpstaffreport.setVisible(false);
     jpcarreports.setVisible(false);
     }
+  final void loadiconsimages(){
+   ImageIcon  serch;
+   serch  = new ImageIcon("images/search.png");
+   btnsearch.setIcon(serch);
+   
+   }
     
 
     /**
@@ -42,6 +50,23 @@ public class AdminHome extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jpstaffaccount = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        btnsearch = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jpcarpricing = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,6 +89,34 @@ public class AdminHome extends javax.swing.JFrame {
         lbcoution = new javax.swing.JLabel();
         lbprice = new javax.swing.JLabel();
         jpaddcar = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jTextField14 = new javax.swing.JTextField();
+        jTextField16 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jPanel7 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jpaddstaff = new javax.swing.JPanel();
         jpcarreports = new javax.swing.JPanel();
         jpstaffreport = new javax.swing.JPanel();
@@ -88,18 +141,87 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(1132, 537));
         jPanel1.setLayout(null);
 
-        jpstaffaccount.setBackground(new java.awt.Color(153, 153, 153));
+        jpstaffaccount.setBackground(new java.awt.Color(255, 255, 255));
+        jpstaffaccount.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Staff Accounts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
+        jpstaffaccount.setLayout(null);
 
-        javax.swing.GroupLayout jpstaffaccountLayout = new javax.swing.GroupLayout(jpstaffaccount);
-        jpstaffaccount.setLayout(jpstaffaccountLayout);
-        jpstaffaccountLayout.setHorizontalGroup(
-            jpstaffaccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-        );
-        jpstaffaccountLayout.setVerticalGroup(
-            jpstaffaccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel4.setLayout(null);
+
+        jLabel6.setText("E-Code :");
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(10, 20, 60, 14);
+        jPanel4.add(jTextField4);
+        jTextField4.setBounds(90, 20, 120, 20);
+
+        jLabel8.setText("E-Name :");
+        jPanel4.add(jLabel8);
+        jLabel8.setBounds(10, 60, 60, 14);
+        jPanel4.add(jTextField5);
+        jTextField5.setBounds(90, 90, 120, 20);
+        jPanel4.add(jTextField6);
+        jTextField6.setBounds(90, 60, 120, 20);
+        jPanel4.add(jTextField7);
+        jTextField7.setBounds(230, 60, 120, 20);
+
+        jLabel11.setText("E-occupation :");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(10, 130, 80, 14);
+        jPanel4.add(jTextField8);
+        jTextField8.setBounds(90, 130, 120, 20);
+
+        jLabel12.setText("E-Status :");
+        jPanel4.add(jLabel12);
+        jLabel12.setBounds(270, 90, 60, 14);
+        jPanel4.add(jTextField9);
+        jTextField9.setBounds(240, 110, 100, 20);
+
+        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnsearch);
+        btnsearch.setBounds(230, 13, 40, 40);
+
+        jpstaffaccount.add(jPanel4);
+        jPanel4.setBounds(6, 26, 360, 170);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel5.setLayout(null);
+
+        jButton3.setBackground(new java.awt.Color(123, 193, 249));
+        jButton3.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
+        jButton3.setText("Release account");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton3);
+        jButton3.setBounds(10, 80, 170, 50);
+
+        jButton4.setBackground(new java.awt.Color(123, 193, 249));
+        jButton4.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
+        jButton4.setText("Frizee account");
+        jPanel5.add(jButton4);
+        jButton4.setBounds(10, 10, 160, 50);
+
+        jButton5.setBackground(new java.awt.Color(123, 193, 249));
+        jButton5.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
+        jButton5.setText("Hold account");
+        jPanel5.add(jButton5);
+        jButton5.setBounds(180, 10, 160, 50);
+
+        jButton6.setBackground(new java.awt.Color(123, 193, 249));
+        jButton6.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
+        jButton6.setText("Delete ");
+        jPanel5.add(jButton6);
+        jButton6.setBounds(190, 80, 150, 50);
+
+        jpstaffaccount.add(jPanel5);
+        jPanel5.setBounds(10, 210, 360, 150);
 
         jPanel1.add(jpstaffaccount);
         jpstaffaccount.setBounds(370, 80, 390, 380);
@@ -202,79 +324,184 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel1.add(jpcarpricing);
         jpcarpricing.setBounds(310, 80, 510, 380);
 
-        jpaddcar.setBackground(new java.awt.Color(255, 255, 204));
+        jpaddcar.setBackground(new java.awt.Color(255, 255, 255));
+        jpaddcar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Add Car", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 14))); // NOI18N
+        jpaddcar.setLayout(null);
 
-        javax.swing.GroupLayout jpaddcarLayout = new javax.swing.GroupLayout(jpaddcar);
-        jpaddcar.setLayout(jpaddcarLayout);
-        jpaddcarLayout.setHorizontalGroup(
-            jpaddcarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-        jpaddcarLayout.setVerticalGroup(
-            jpaddcarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
+        jPanel6.setLayout(null);
+
+        jLabel13.setText("Car Class  :");
+        jPanel6.add(jLabel13);
+        jLabel13.setBounds(380, 240, 70, 14);
+
+        jLabel14.setText("Status :");
+        jPanel6.add(jLabel14);
+        jLabel14.setBounds(10, 110, 60, 14);
+
+        jLabel15.setText("Capasity :");
+        jPanel6.add(jLabel15);
+        jLabel15.setBounds(10, 160, 60, 14);
+
+        jLabel16.setText("Prime Years :");
+        jPanel6.add(jLabel16);
+        jLabel16.setBounds(10, 200, 80, 14);
+
+        jLabel17.setText("Date Bought :");
+        jPanel6.add(jLabel17);
+        jLabel17.setBounds(10, 240, 80, 14);
+
+        jLabel18.setText("Insurance Company:");
+        jPanel6.add(jLabel18);
+        jLabel18.setBounds(380, 40, 110, 14);
+
+        jLabel19.setText("Insurance Date :");
+        jPanel6.add(jLabel19);
+        jLabel19.setBounds(380, 90, 90, 14);
+
+        jLabel20.setText("Insurance Expiry :");
+        jPanel6.add(jLabel20);
+        jLabel20.setBounds(380, 130, 100, 14);
+
+        jLabel21.setText("Allocated Banch :");
+        jPanel6.add(jLabel21);
+        jLabel21.setBounds(380, 200, 90, 14);
+
+        jLabel22.setText("Car Type :");
+        jPanel6.add(jLabel22);
+        jLabel22.setBounds(10, 29, 60, 14);
+
+        jLabel23.setText("Car Number :");
+        jPanel6.add(jLabel23);
+        jLabel23.setBounds(10, 70, 70, 14);
+        jPanel6.add(jTextField11);
+        jTextField11.setBounds(110, 160, 170, 20);
+        jPanel6.add(jTextField12);
+        jTextField12.setBounds(110, 200, 170, 20);
+        jPanel6.add(jTextField13);
+        jTextField13.setBounds(500, 40, 190, 20);
+
+        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField14ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jTextField14);
+        jTextField14.setBounds(110, 110, 170, 20);
+        jPanel6.add(jTextField16);
+        jTextField16.setBounds(110, 70, 170, 20);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel6.add(jComboBox1);
+        jComboBox1.setBounds(500, 200, 140, 20);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel6.add(jComboBox2);
+        jComboBox2.setBounds(110, 30, 170, 20);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel6.add(jComboBox3);
+        jComboBox3.setBounds(500, 240, 140, 20);
+        jPanel6.add(jDateChooser1);
+        jDateChooser1.setBounds(500, 80, 170, 20);
+        jPanel6.add(jDateChooser2);
+        jDateChooser2.setBounds(500, 130, 170, 20);
+        jPanel6.add(jDateChooser3);
+        jDateChooser3.setBounds(110, 240, 170, 20);
+
+        jpaddcar.add(jPanel6);
+        jPanel6.setBounds(10, 30, 720, 310);
+
+        jPanel7.setLayout(null);
+
+        jButton7.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jButton7.setText("Hold");
+        jPanel7.add(jButton7);
+        jButton7.setBounds(360, 10, 150, 50);
+
+        jButton8.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jButton8.setText("Delete");
+        jPanel7.add(jButton8);
+        jButton8.setBounds(523, 10, 150, 50);
+
+        jButton9.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jButton9.setText("Update ");
+        jPanel7.add(jButton9);
+        jButton9.setBounds(170, 10, 160, 50);
+
+        jButton10.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jButton10.setText("Add Car");
+        jPanel7.add(jButton10);
+        jButton10.setBounds(20, 10, 140, 50);
+
+        jpaddcar.add(jPanel7);
+        jPanel7.setBounds(10, 350, 720, 70);
 
         jPanel1.add(jpaddcar);
         jpaddcar.setBounds(200, 80, 750, 430);
+
+        jpaddstaff.setBackground(new java.awt.Color(255, 255, 255));
+        jpaddstaff.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Add Staff", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
 
         javax.swing.GroupLayout jpaddstaffLayout = new javax.swing.GroupLayout(jpaddstaff);
         jpaddstaff.setLayout(jpaddstaffLayout);
         jpaddstaffLayout.setHorizontalGroup(
             jpaddstaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+            .addGap(0, 858, Short.MAX_VALUE)
         );
         jpaddstaffLayout.setVerticalGroup(
             jpaddstaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
 
         jPanel1.add(jpaddstaff);
         jpaddstaff.setBounds(140, 80, 870, 430);
 
-        jpcarreports.setBackground(new java.awt.Color(153, 255, 153));
+        jpcarreports.setBackground(new java.awt.Color(255, 255, 255));
+        jpcarreports.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Car Reports", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
 
         javax.swing.GroupLayout jpcarreportsLayout = new javax.swing.GroupLayout(jpcarreports);
         jpcarreports.setLayout(jpcarreportsLayout);
         jpcarreportsLayout.setHorizontalGroup(
             jpcarreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 928, Short.MAX_VALUE)
         );
         jpcarreportsLayout.setVerticalGroup(
             jpcarreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
 
         jPanel1.add(jpcarreports);
         jpcarreports.setBounds(90, 80, 940, 430);
 
-        jpstaffreport.setBackground(new java.awt.Color(255, 204, 51));
+        jpstaffreport.setBackground(new java.awt.Color(255, 255, 255));
+        jpstaffreport.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Staff Reports", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
 
         javax.swing.GroupLayout jpstaffreportLayout = new javax.swing.GroupLayout(jpstaffreport);
         jpstaffreport.setLayout(jpstaffreportLayout);
         jpstaffreportLayout.setHorizontalGroup(
             jpstaffreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGap(0, 998, Short.MAX_VALUE)
         );
         jpstaffreportLayout.setVerticalGroup(
             jpstaffreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
 
         jPanel1.add(jpstaffreport);
         jpstaffreport.setBounds(40, 80, 1010, 430);
 
-        jporgreport.setBackground(new java.awt.Color(255, 153, 153));
+        jporgreport.setBackground(new java.awt.Color(255, 255, 255));
+        jporgreport.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Organization Reports", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
 
         javax.swing.GroupLayout jporgreportLayout = new javax.swing.GroupLayout(jporgreport);
         jporgreport.setLayout(jporgreportLayout);
         jporgreportLayout.setHorizontalGroup(
             jporgreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGap(0, 1068, Short.MAX_VALUE)
         );
         jporgreportLayout.setVerticalGroup(
             jporgreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
 
         jPanel1.add(jporgreport);
@@ -495,6 +722,18 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbtypeActionPerformed
 
+    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsearchActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -531,16 +770,46 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnsearch;
     private javax.swing.JComboBox<String> cmbtype;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -549,9 +818,24 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JMenuItem jmaddcar;
     private javax.swing.JMenuItem jmaddstaff;
     private javax.swing.JMenuItem jmcarpricing;
