@@ -7,6 +7,7 @@ package princewheel;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +22,8 @@ public class AdminHome extends javax.swing.JFrame {
         initComponents();
         hidecomponets();
         loadiconsimages();
+        carreporttable();
+        staffreporttable();
     }
    final void hidecomponets(){
     jpstaffaccount.setVisible(false);
@@ -35,8 +38,33 @@ public class AdminHome extends javax.swing.JFrame {
    ImageIcon  serch;
    serch  = new ImageIcon("images/search.png");
    btnsearch.setIcon(serch);
+   btnsearchreport.setIcon(serch);
+   btnsearchstaffreport.setIcon(serch);
    
    }
+  final void  carreporttable(){
+  DefaultTableModel dtm = new DefaultTableModel();
+  dtm.addColumn("Car No");
+  dtm.addColumn("Car Type");
+  dtm.addColumn("Car Status");
+  dtm.addColumn("Ins Expiry");
+  dtm.addColumn("Avilability");
+  dtm.addColumn("Car Class");
+  dtm.addColumn("Lease Price");
+  dtm.addColumn("Discount");
+   tblcarreport.setModel(dtm);
+  }
+  final void staffreporttable(){
+   DefaultTableModel dtm = new DefaultTableModel();
+  dtm.addColumn("E-Code ");
+  dtm.addColumn("Category");
+  dtm.addColumn("Acc Status");
+  dtm.addColumn("Age");
+  dtm.addColumn("Avilability");
+  dtm.addColumn("Enroll");
+  dtm.addColumn("Asigns");
+   tblstaffreport.setModel(dtm);
+  }
     
 
     /**
@@ -118,13 +146,60 @@ public class AdminHome extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jpaddstaff = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField17 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jTextField18 = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        cmbcounties = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jTextField19 = new javax.swing.JTextField();
+        jTextField20 = new javax.swing.JTextField();
+        jTextField21 = new javax.swing.JTextField();
+        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        jButton11 = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        jTextField22 = new javax.swing.JTextField();
         jpcarreports = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblcarreport = new javax.swing.JTable();
+        jPanel9 = new javax.swing.JPanel();
+        txtcarnoreport = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        btnsearchreport = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        cmbcartypereport = new javax.swing.JComboBox<>();
+        jButton12 = new javax.swing.JButton();
         jpstaffreport = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jTextField23 = new javax.swing.JTextField();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        btnsearchstaffreport = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblstaffreport = new javax.swing.JTable();
         jporgreport = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmaddcar = new javax.swing.JMenuItem();
         jmcarpricing = new javax.swing.JMenuItem();
+        jmdailyrequest = new javax.swing.JMenuItem();
         jmlogout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmcarreport = new javax.swing.JMenuItem();
@@ -441,51 +516,216 @@ public class AdminHome extends javax.swing.JFrame {
 
         jpaddstaff.setBackground(new java.awt.Color(255, 255, 255));
         jpaddstaff.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Add Staff", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
+        jpaddstaff.setLayout(null);
 
-        javax.swing.GroupLayout jpaddstaffLayout = new javax.swing.GroupLayout(jpaddstaff);
-        jpaddstaff.setLayout(jpaddstaffLayout);
-        jpaddstaffLayout.setHorizontalGroup(
-            jpaddstaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 858, Short.MAX_VALUE)
-        );
-        jpaddstaffLayout.setVerticalGroup(
-            jpaddstaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
-        );
+        jPanel10.setLayout(null);
+
+        jLabel26.setText("Full Name  :");
+        jPanel10.add(jLabel26);
+        jLabel26.setBounds(20, 40, 70, 14);
+        jPanel10.add(jTextField10);
+        jTextField10.setBounds(270, 40, 160, 20);
+        jPanel10.add(jTextField15);
+        jTextField15.setBounds(450, 40, 160, 20);
+        jPanel10.add(jTextField17);
+        jTextField17.setBounds(510, 130, 160, 20);
+
+        jLabel27.setText("ID Number :");
+        jPanel10.add(jLabel27);
+        jLabel27.setBounds(20, 90, 80, 14);
+        jPanel10.add(jTextField18);
+        jTextField18.setBounds(90, 40, 160, 20);
+
+        jLabel28.setText("Phone :");
+        jPanel10.add(jLabel28);
+        jLabel28.setBounds(20, 140, 37, 14);
+
+        jLabel29.setText("Email :");
+        jPanel10.add(jLabel29);
+        jLabel29.setBounds(20, 180, 31, 14);
+
+        jLabel30.setText("Location :");
+        jPanel10.add(jLabel30);
+        jLabel30.setBounds(20, 220, 50, 14);
+
+        jLabel31.setText("Year Of Birth :");
+        jPanel10.add(jLabel31);
+        jLabel31.setBounds(20, 260, 69, 14);
+
+        jLabel32.setText("Gender :");
+        jPanel10.add(jLabel32);
+        jLabel32.setBounds(280, 90, 60, 14);
+
+        jLabel33.setText("Branch :");
+        jPanel10.add(jLabel33);
+        jLabel33.setBounds(430, 200, 40, 14);
+
+        jLabel34.setText("E-code :");
+        jPanel10.add(jLabel34);
+        jLabel34.setBounds(430, 160, 40, 14);
+
+        jLabel35.setText("Assign :");
+        jPanel10.add(jLabel35);
+        jLabel35.setBounds(430, 250, 38, 14);
+
+        cmbcounties.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NAIROBI", "MOMBASA", "KWALE", "KILIFI", "TANA RIVER", "LAMU", "TAITA TAVETA", "GARISSA", "WAJIR", "MANDERA", "MARSABIT", "ISIOLO", "MERU", "THARAKANITHI", "EMBU", "KITUI", "MACHAKOS", "MAKUENI", "NYANDARUS", "NYERI", "KIRINYAGA", "MURANGA", "KIAMBU", "TURKANA", "WEST POKOT", "SAMBURU", "TRANS NZOIA", "UASIN GISHU", "ELGEYO MARAKET", "NANDI", "BARINGO", "LAIKIPIA", "NAKURU", "NAROK", "KAJIADO", "BOMET", "KAKAMEGA", "VIHIGA", "BUNGOMA", "BUSIA", "SIAYA", "KISUMU", "HOMA BAY", "MIGORI", "KISII", "NYAMIRA", "KERICHO" }));
+        cmbcounties.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbcountiesActionPerformed(evt);
+            }
+        });
+        jPanel10.add(cmbcounties);
+        cmbcounties.setBounds(90, 210, 160, 20);
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE" }));
+        jPanel10.add(jComboBox5);
+        jComboBox5.setBounds(350, 90, 140, 20);
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MAIN BANCH", "BRANCH A", "BRANCH B" }));
+        jPanel10.add(jComboBox6);
+        jComboBox6.setBounds(510, 200, 160, 20);
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AGENT", "HEAD AGENT", "ENGINEER", "HEAD ENGINEER" }));
+        jPanel10.add(jComboBox7);
+        jComboBox7.setBounds(510, 250, 160, 20);
+        jPanel10.add(jTextField19);
+        jTextField19.setBounds(90, 130, 160, 20);
+        jPanel10.add(jTextField20);
+        jTextField20.setBounds(90, 170, 160, 20);
+        jPanel10.add(jTextField21);
+        jTextField21.setBounds(90, 90, 160, 20);
+
+        jDateChooser4.setDateFormatString("dd-MM-yyyy");
+        jPanel10.add(jDateChooser4);
+        jDateChooser4.setBounds(100, 260, 210, 20);
+
+        jButton11.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jButton11.setText("Create  New Account");
+        jPanel10.add(jButton11);
+        jButton11.setBounds(260, 313, 350, 40);
+
+        jLabel36.setText("A-code :");
+        jPanel10.add(jLabel36);
+        jLabel36.setBounds(430, 130, 41, 14);
+        jPanel10.add(jTextField22);
+        jTextField22.setBounds(510, 160, 160, 20);
+
+        jpaddstaff.add(jPanel10);
+        jPanel10.setBounds(10, 30, 840, 370);
 
         jPanel1.add(jpaddstaff);
         jpaddstaff.setBounds(140, 80, 870, 430);
 
         jpcarreports.setBackground(new java.awt.Color(255, 255, 255));
         jpcarreports.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Car Reports", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
+        jpcarreports.setLayout(null);
 
-        javax.swing.GroupLayout jpcarreportsLayout = new javax.swing.GroupLayout(jpcarreports);
-        jpcarreports.setLayout(jpcarreportsLayout);
-        jpcarreportsLayout.setHorizontalGroup(
-            jpcarreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 928, Short.MAX_VALUE)
-        );
-        jpcarreportsLayout.setVerticalGroup(
-            jpcarreportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
-        );
+        jPanel8.setLayout(null);
+
+        tblcarreport.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tblcarreport.setToolTipText("General Car Reports");
+        tblcarreport.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane1.setViewportView(tblcarreport);
+
+        jPanel8.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 10, 890, 260);
+
+        jpcarreports.add(jPanel8);
+        jPanel8.setBounds(10, 130, 910, 280);
+
+        jPanel9.setLayout(null);
+        jPanel9.add(txtcarnoreport);
+        txtcarnoreport.setBounds(70, 10, 110, 20);
+
+        jLabel24.setText("Car No:");
+        jPanel9.add(jLabel24);
+        jLabel24.setBounds(10, 10, 50, 14);
+
+        btnsearchreport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchreportActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btnsearchreport);
+        btnsearchreport.setBounds(190, 10, 50, 50);
+
+        jLabel25.setText("Car Type :");
+        jPanel9.add(jLabel25);
+        jLabel25.setBounds(10, 40, 60, 14);
+
+        cmbcartypereport.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel9.add(cmbcartypereport);
+        cmbcartypereport.setBounds(70, 40, 110, 20);
+
+        jButton12.setText("PRINT");
+        jPanel9.add(jButton12);
+        jButton12.setBounds(569, 43, 130, 30);
+
+        jpcarreports.add(jPanel9);
+        jPanel9.setBounds(90, 30, 720, 80);
 
         jPanel1.add(jpcarreports);
         jpcarreports.setBounds(90, 80, 940, 430);
 
         jpstaffreport.setBackground(new java.awt.Color(255, 255, 255));
         jpstaffreport.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Staff Reports", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
+        jpstaffreport.setLayout(null);
 
-        javax.swing.GroupLayout jpstaffreportLayout = new javax.swing.GroupLayout(jpstaffreport);
-        jpstaffreport.setLayout(jpstaffreportLayout);
-        jpstaffreportLayout.setHorizontalGroup(
-            jpstaffreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 998, Short.MAX_VALUE)
-        );
-        jpstaffreportLayout.setVerticalGroup(
-            jpstaffreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
-        );
+        jPanel11.setLayout(null);
+
+        jLabel37.setText("E-Code :");
+        jPanel11.add(jLabel37);
+        jLabel37.setBounds(28, 11, 60, 14);
+
+        jLabel38.setText("Category :");
+        jPanel11.add(jLabel38);
+        jLabel38.setBounds(20, 40, 70, 14);
+        jPanel11.add(jTextField23);
+        jTextField23.setBounds(120, 10, 130, 20);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel11.add(jComboBox4);
+        jComboBox4.setBounds(120, 40, 130, 20);
+        jPanel11.add(btnsearchstaffreport);
+        btnsearchstaffreport.setBounds(260, 10, 50, 50);
+
+        jButton14.setText("PRINT");
+        jPanel11.add(jButton14);
+        jButton14.setBounds(619, 23, 140, 40);
+
+        jpstaffreport.add(jPanel11);
+        jPanel11.setBounds(90, 40, 770, 70);
+
+        jPanel12.setLayout(null);
+
+        tblstaffreport.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblstaffreport);
+
+        jPanel12.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 10, 960, 260);
+
+        jpstaffreport.add(jPanel12);
+        jPanel12.setBounds(10, 130, 980, 280);
 
         jPanel1.add(jpstaffreport);
         jpstaffreport.setBounds(40, 80, 1010, 430);
@@ -524,6 +764,9 @@ public class AdminHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jmcarpricing);
+
+        jmdailyrequest.setText("Daily Request");
+        jMenu1.add(jmdailyrequest);
 
         jmlogout.setText("Logout");
         jmlogout.addActionListener(new java.awt.event.ActionListener() {
@@ -734,6 +977,24 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField14ActionPerformed
 
+    private void btnsearchreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchreportActionPerformed
+        // TODO add your handling code here:
+        if("".equals(txtcarnoreport.getText())){
+        JOptionPane.showMessageDialog(null,"looking for combobox");
+        String cartype = cmbcartypereport.getSelectedItem().toString();
+        JOptionPane.showMessageDialog(null,"looking for " + cartype);
+        
+        }else{
+           JOptionPane.showMessageDialog(null,"looking for textbox"); 
+           String carno = txtcarnoreport.getText();
+           JOptionPane.showMessageDialog(null,"looking for " + carno);
+        }
+    }//GEN-LAST:event_btnsearchreportActionPerformed
+
+    private void cmbcountiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcountiesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbcountiesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -771,9 +1032,16 @@ public class AdminHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnsearch;
+    private javax.swing.JButton btnsearchreport;
+    private javax.swing.JButton btnsearchstaffreport;
+    private javax.swing.JComboBox<String> cmbcartypereport;
+    private javax.swing.JComboBox<String> cmbcounties;
     private javax.swing.JComboBox<String> cmbtype;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -785,9 +1053,14 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateChooser4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -804,7 +1077,22 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -816,19 +1104,35 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
+    private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -840,6 +1144,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmaddstaff;
     private javax.swing.JMenuItem jmcarpricing;
     private javax.swing.JMenuItem jmcarreport;
+    private javax.swing.JMenuItem jmdailyrequest;
     private javax.swing.JMenuItem jmlogout;
     private javax.swing.JMenuItem jmorgreport;
     private javax.swing.JMenuItem jmstaffaccount;
@@ -855,5 +1160,8 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel lbdiscount;
     private javax.swing.JLabel lbprice;
     private javax.swing.JLabel lbtype;
+    private javax.swing.JTable tblcarreport;
+    private javax.swing.JTable tblstaffreport;
+    private javax.swing.JTextField txtcarnoreport;
     // End of variables declaration//GEN-END:variables
 }

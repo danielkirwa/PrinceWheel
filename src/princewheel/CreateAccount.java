@@ -19,6 +19,68 @@ public class CreateAccount extends javax.swing.JFrame {
      */
     public CreateAccount() {
         initComponents();
+        
+        
+    }
+      final void createaccountprogress(){
+    
+        try{
+            int x;
+             if(!"".equals(txtfname.getText()) && !"".equals(txtmname.getText())&& !"".equals(txtidnumber.getText()) && !"".equals(txtecode.getText())
+                    && !"".equals(txtemail.getText()) && !"".equals(cmbaccount.getSelectedItem()) && !"".equals(jppassword.getText())&& !"".equals(jpconfirmpassword.getText())){
+            x = 70;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }
+             else if(!"".equals(txtfname.getText()) && !"".equals(txtmname.getText())&& !"".equals(txtidnumber.getText()) && !"".equals(txtecode.getText())
+                    && !"".equals(txtemail.getText()) && !"".equals(cmbaccount.getSelectedItem()) && !"".equals(jppassword.getText())){
+            x = 60;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }
+             else if(!"".equals(txtfname.getText()) && !"".equals(txtmname.getText())&& !"".equals(txtidnumber.getText()) && !"".equals(txtecode.getText())
+                    && !"".equals(txtemail.getText()) && !"".equals(cmbaccount.getSelectedItem())){
+            x = 50;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }
+            else if(!"".equals(txtfname.getText()) && !"".equals(txtmname.getText())&& !"".equals(txtidnumber.getText()) && !"".equals(txtecode.getText())
+                    && !"".equals(txtemail.getText())){
+            x = 40;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }
+            else if(!"".equals(txtfname.getText()) && !"".equals(txtmname.getText())&& !"".equals(txtidnumber.getText()) && !"".equals(txtecode.getText())){
+            x = 30;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }else if(!"".equals(txtfname.getText()) && !"".equals(txtmname.getText())&& !"".equals(txtidnumber.getText())){
+            x = 20;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }else if(!"".equals(txtfname.getText()) && !"".equals(txtmname.getText())){
+            x = 10;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }
+           else{
+                 x = 0;
+            Thread.sleep( x);
+            progressbar.setValue(x);
+            lbpercent.setText(Integer.toString(x)+"%");
+            }
+    
+        }
+        catch(InterruptedException ex){
+           
+        }
     }
 
     /**
@@ -56,6 +118,9 @@ public class CreateAccount extends javax.swing.JFrame {
         btnshowpass = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         cmbaccount = new javax.swing.JComboBox<>();
+        progressbar = new javax.swing.JProgressBar();
+        jLabel9 = new javax.swing.JLabel();
+        lbpercent = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("PRINCE WHEEL");
@@ -162,21 +227,65 @@ public class CreateAccount extends javax.swing.JFrame {
         jLabel6.setText("CONFIRM PASSWORD :");
         jPanel3.add(jLabel6);
         jLabel6.setBounds(20, 310, 120, 14);
+
+        txtemail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtemailFocusGained(evt);
+            }
+        });
         jPanel3.add(txtemail);
         txtemail.setBounds(110, 180, 120, 20);
+
+        txtlname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtlnameActionPerformed(evt);
+            }
+        });
         jPanel3.add(txtlname);
         txtlname.setBounds(110, 60, 120, 20);
+
+        txtidnumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtidnumberFocusGained(evt);
+            }
+        });
         jPanel3.add(txtidnumber);
         txtidnumber.setBounds(110, 100, 120, 20);
+
+        txtecode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtecodeFocusGained(evt);
+            }
+        });
         jPanel3.add(txtecode);
         txtecode.setBounds(110, 140, 120, 20);
         jPanel3.add(txtfname);
         txtfname.setBounds(110, 30, 120, 20);
+
+        txtmname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmnameActionPerformed(evt);
+            }
+        });
         jPanel3.add(txtmname);
         txtmname.setBounds(260, 30, 130, 20);
+
+        jpconfirmpassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpconfirmpasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jpconfirmpasswordFocusLost(evt);
+            }
+        });
         jPanel3.add(jpconfirmpassword);
         jpconfirmpassword.setBounds(150, 300, 190, 20);
 
+        jppassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jppasswordFocusGained(evt);
+            }
+        });
         jppassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jppasswordActionPerformed(evt);
@@ -200,6 +309,11 @@ public class CreateAccount extends javax.swing.JFrame {
         jLabel8.setBounds(20, 220, 70, 14);
 
         cmbaccount.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AGENT", "ENGINEER" }));
+        cmbaccount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbaccountFocusGained(evt);
+            }
+        });
         jPanel3.add(cmbaccount);
         cmbaccount.setBounds(110, 220, 120, 20);
 
@@ -208,6 +322,19 @@ public class CreateAccount extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(40, 30, 810, 470);
+
+        progressbar.setBackground(new java.awt.Color(255, 255, 255));
+        progressbar.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel1.add(progressbar);
+        progressbar.setBounds(280, 10, 450, 14);
+
+        jLabel9.setText("Complete at least 70% to create account ...");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(20, 10, 240, 14);
+
+        lbpercent.setText("0.0%");
+        jPanel1.add(lbpercent);
+        lbpercent.setBounds(780, 10, 50, 14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,6 +411,50 @@ public class CreateAccount extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnaddimageActionPerformed
 
+    private void txtlnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtlnameActionPerformed
+
+    private void txtmnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmnameActionPerformed
+        // TODO add your handling code here:
+        //createaccountprogress();
+    }//GEN-LAST:event_txtmnameActionPerformed
+
+    private void txtidnumberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtidnumberFocusGained
+        // TODO add your handling code here:
+        createaccountprogress();
+    }//GEN-LAST:event_txtidnumberFocusGained
+
+    private void txtecodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtecodeFocusGained
+        // TODO add your handling code here:
+        createaccountprogress();
+    }//GEN-LAST:event_txtecodeFocusGained
+
+    private void txtemailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtemailFocusGained
+        // TODO add your handling code here:
+        createaccountprogress();
+    }//GEN-LAST:event_txtemailFocusGained
+
+    private void cmbaccountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbaccountFocusGained
+        // TODO add your handling code here:
+        createaccountprogress();
+    }//GEN-LAST:event_cmbaccountFocusGained
+
+    private void jppasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jppasswordFocusGained
+        // TODO add your handling code here:
+        createaccountprogress();
+    }//GEN-LAST:event_jppasswordFocusGained
+
+    private void jpconfirmpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpconfirmpasswordFocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jpconfirmpasswordFocusGained
+
+    private void jpconfirmpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpconfirmpasswordFocusLost
+        // TODO add your handling code here:
+        createaccountprogress();
+    }//GEN-LAST:event_jpconfirmpasswordFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -335,12 +506,15 @@ public class CreateAccount extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField jpconfirmpassword;
     private javax.swing.JPasswordField jppassword;
+    private javax.swing.JLabel lbpercent;
+    public static javax.swing.JProgressBar progressbar;
     private javax.swing.JTextField txtecode;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtfname;
