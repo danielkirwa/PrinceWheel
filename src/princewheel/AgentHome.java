@@ -24,14 +24,14 @@ public class AgentHome extends javax.swing.JFrame {
         loadavailablecars();
         loadibtnicon();
     }
-    void hidepanels(){
+   final  void hidepanels(){
     jprequest.setVisible(false);
     jpclearlease.setVisible(false);
     jpcarreport.setVisible(false);
     jpclientreport.setVisible(false);
     
     }
-    void loadavailablecars(){
+   final void loadavailablecars(){
     DefaultTableModel dtm = new DefaultTableModel();
     dtm.addColumn("CAR TYPE");
     dtm.addColumn("CAR NUMBER");
@@ -41,7 +41,7 @@ public class AgentHome extends javax.swing.JFrame {
     tblavailablecar.setModel(dtm);
   
     }
-    void loadibtnicon(){
+    final void loadibtnicon(){
         ImageIcon srch1,srch2,clear1,requ;
     srch1 = new ImageIcon("images/search.png");
     srch2 = new ImageIcon("images/search.png");
@@ -53,6 +53,7 @@ public class AgentHome extends javax.swing.JFrame {
     btnsearchcar.setIcon(srch2);
     btnrequestexd.setIcon(requ);
     btncheckprice.setIcon(requ);
+    btnsearchclientreceipt.setIcon(srch1);
     }
 
     /**
@@ -163,6 +164,34 @@ public class AgentHome extends javax.swing.JFrame {
         btnclearlease = new javax.swing.JButton();
         btnextendlease = new javax.swing.JButton();
         jpclientreport = new javax.swing.JPanel();
+        jpclientreceipt = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        btnsearchclientreceipt = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
         jpcarreport = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -586,16 +615,132 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel1.add(jpclearlease);
         jpclearlease.setBounds(20, 30, 1060, 440);
 
-        javax.swing.GroupLayout jpclientreportLayout = new javax.swing.GroupLayout(jpclientreport);
-        jpclientreport.setLayout(jpclientreportLayout);
-        jpclientreportLayout.setHorizontalGroup(
-            jpclientreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        jpclientreportLayout.setVerticalGroup(
-            jpclientreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-        );
+        jpclientreport.setBackground(new java.awt.Color(241, 241, 241));
+        jpclientreport.setLayout(null);
+
+        jpclientreceipt.setBackground(new java.awt.Color(255, 255, 255));
+        jpclientreceipt.setLayout(null);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel10.setLayout(null);
+
+        jLabel48.setText("Car Capasity :");
+        jPanel10.add(jLabel48);
+        jLabel48.setBounds(30, 220, 260, 14);
+
+        jLabel49.setText("End Lease :");
+        jPanel10.add(jLabel49);
+        jLabel49.setBounds(30, 190, 250, 14);
+
+        jLabel50.setText("Lease Date");
+        jPanel10.add(jLabel50);
+        jLabel50.setBounds(30, 160, 250, 14);
+
+        jLabel51.setText("Current State :");
+        jPanel10.add(jLabel51);
+        jLabel51.setBounds(30, 130, 250, 14);
+
+        jLabel52.setText("Car NO :");
+        jPanel10.add(jLabel52);
+        jLabel52.setBounds(30, 100, 250, 14);
+
+        jLabel53.setText("Car Type :");
+        jPanel10.add(jLabel53);
+        jLabel53.setBounds(30, 70, 240, 14);
+
+        jLabel54.setText("Lease Period :");
+        jPanel10.add(jLabel54);
+        jLabel54.setBounds(30, 250, 250, 14);
+
+        jLabel55.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jLabel55.setText("Lease  information");
+        jPanel10.add(jLabel55);
+        jLabel55.setBounds(20, 20, 250, 20);
+
+        jpclientreceipt.add(jPanel10);
+        jPanel10.setBounds(20, 80, 330, 290);
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel11.setLayout(null);
+
+        jLabel56.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jLabel56.setText("Lease Rates");
+        jPanel11.add(jLabel56);
+        jLabel56.setBounds(20, 20, 250, 20);
+
+        jLabel57.setText("Lease Rate :");
+        jPanel11.add(jLabel57);
+        jLabel57.setBounds(30, 70, 260, 14);
+
+        jLabel58.setText("Discount Allowed");
+        jPanel11.add(jLabel58);
+        jLabel58.setBounds(30, 100, 220, 14);
+
+        jLabel59.setText("Caution Amt :");
+        jPanel11.add(jLabel59);
+        jLabel59.setBounds(30, 130, 250, 14);
+
+        jLabel60.setText("Total Cost :");
+        jPanel11.add(jLabel60);
+        jLabel60.setBounds(30, 160, 260, 14);
+
+        jLabel61.setText("Net Pay :");
+        jPanel11.add(jLabel61);
+        jLabel61.setBounds(30, 190, 260, 14);
+
+        jLabel62.setText("Lease Type :");
+        jPanel11.add(jLabel62);
+        jLabel62.setBounds(30, 250, 260, 14);
+
+        jpclientreceipt.add(jPanel11);
+        jPanel11.setBounds(350, 80, 360, 290);
+
+        jLabel43.setText("Client ID :");
+        jpclientreceipt.add(jLabel43);
+        jLabel43.setBounds(70, 30, 60, 14);
+
+        jLabel44.setText("Date :");
+        jpclientreceipt.add(jLabel44);
+        jLabel44.setBounds(580, 20, 50, 14);
+
+        jLabel45.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jLabel45.setText("PRINCE  WHEEL ");
+        jpclientreceipt.add(jLabel45);
+        jLabel45.setBounds(270, 10, 210, 20);
+
+        jLabel46.setText("PO BOX 123456789  Princewheel");
+        jpclientreceipt.add(jLabel46);
+        jLabel46.setBounds(280, 40, 210, 14);
+
+        jLabel47.setText("Time :");
+        jpclientreceipt.add(jLabel47);
+        jLabel47.setBounds(580, 40, 40, 14);
+
+        jpclientreport.add(jpclientreceipt);
+        jpclientreceipt.setBounds(30, 90, 730, 370);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(null);
+
+        btnsearchclientreceipt.setBackground(new java.awt.Color(123, 193, 249));
+        jPanel9.add(btnsearchclientreceipt);
+        btnsearchclientreceipt.setBounds(230, 10, 40, 40);
+
+        jButton1.setBackground(new java.awt.Color(123, 193, 249));
+        jButton1.setText("PRINT");
+        jPanel9.add(jButton1);
+        jButton1.setBounds(390, 10, 170, 40);
+
+        jLabel42.setText("CLIENT ID :");
+        jPanel9.add(jLabel42);
+        jLabel42.setBounds(10, 20, 70, 14);
+        jPanel9.add(jTextField15);
+        jTextField15.setBounds(90, 20, 120, 20);
+
+        jpclientreport.add(jPanel9);
+        jPanel9.setBounds(100, 10, 570, 60);
 
         jPanel1.add(jpclientreport);
         jpclientreport.setBounds(190, 20, 800, 470);
@@ -690,8 +835,10 @@ public class AgentHome extends javax.swing.JFrame {
     private void jmleasenowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmleasenowActionPerformed
         // TODO add your handling code here:
         jpleasenow.setVisible(true);
-          jprequest.setVisible(true);
+          jprequest.setVisible(false);
     jpclearlease.setVisible(false);
+    jpcarreport.setVisible(false);
+    jpclientreport.setVisible(false);
     
     }//GEN-LAST:event_jmleasenowActionPerformed
 
@@ -808,8 +955,10 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JButton btnrequestexd;
     private javax.swing.JButton btnsearchcar;
     private javax.swing.JButton btnsearchclear;
+    private javax.swing.JButton btnsearchclientreceipt;
     private javax.swing.JButton btnsearchexd;
     private javax.swing.JComboBox<String> cmbcartype;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -851,8 +1000,29 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -860,6 +1030,8 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -867,6 +1039,7 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
@@ -874,6 +1047,7 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
@@ -903,6 +1077,7 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmrequest;
     private javax.swing.JPanel jpcarreport;
     private javax.swing.JPanel jpclearlease;
+    private javax.swing.JPanel jpclientreceipt;
     private javax.swing.JPanel jpclientreport;
     private javax.swing.JPanel jpleasenow;
     private javax.swing.JPanel jprequest;

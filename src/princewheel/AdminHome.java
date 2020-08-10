@@ -5,6 +5,9 @@
  */
 package princewheel;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +21,18 @@ public class AdminHome extends javax.swing.JFrame {
     /**
      * Creates new form AdminHome
      */
+    
+    // database declaration
+    Statement st;
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    String username = "root";
+    String password = "";
+    String url = "jdbc:mysql://localhost:3306/princewheeldb";
+    
+    
     public AdminHome() {
         initComponents();
         hidecomponets();
@@ -129,22 +144,22 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        txtcarcapacity = new javax.swing.JTextField();
+        txtcarprimeyears = new javax.swing.JTextField();
+        txtinsurancecompany = new javax.swing.JTextField();
+        txtcarno = new javax.swing.JTextField();
+        cmbbranch = new javax.swing.JComboBox<>();
+        cmbcartype = new javax.swing.JComboBox<>();
+        cmbclass = new javax.swing.JComboBox<>();
+        jdstatinsurance = new com.toedter.calendar.JDateChooser();
+        jdendinsurance = new com.toedter.calendar.JDateChooser();
+        jdbought = new com.toedter.calendar.JDateChooser();
+        cmbcarstatus = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnholdcar = new javax.swing.JButton();
+        btndeletecar = new javax.swing.JButton();
+        btnupdatecar = new javax.swing.JButton();
+        btnaddcar = new javax.swing.JButton();
         jpaddstaff = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
@@ -407,7 +422,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         jLabel13.setText("Car Class  :");
         jPanel6.add(jLabel13);
-        jLabel13.setBounds(380, 240, 70, 14);
+        jLabel13.setBounds(380, 240, 80, 14);
 
         jLabel14.setText("Status :");
         jPanel6.add(jLabel14);
@@ -439,7 +454,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         jLabel21.setText("Allocated Banch :");
         jPanel6.add(jLabel21);
-        jLabel21.setBounds(380, 200, 90, 14);
+        jLabel21.setBounds(380, 200, 110, 14);
 
         jLabel22.setText("Car Type :");
         jPanel6.add(jLabel22);
@@ -448,65 +463,72 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel23.setText("Car Number :");
         jPanel6.add(jLabel23);
         jLabel23.setBounds(10, 70, 70, 14);
-        jPanel6.add(jTextField11);
-        jTextField11.setBounds(110, 160, 170, 20);
-        jPanel6.add(jTextField12);
-        jTextField12.setBounds(110, 200, 170, 20);
-        jPanel6.add(jTextField13);
-        jTextField13.setBounds(500, 40, 190, 20);
+        jPanel6.add(txtcarcapacity);
+        txtcarcapacity.setBounds(110, 160, 170, 20);
+        jPanel6.add(txtcarprimeyears);
+        txtcarprimeyears.setBounds(110, 200, 170, 20);
+        jPanel6.add(txtinsurancecompany);
+        txtinsurancecompany.setBounds(500, 40, 190, 20);
+        jPanel6.add(txtcarno);
+        txtcarno.setBounds(110, 70, 170, 20);
 
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jTextField14);
-        jTextField14.setBounds(110, 110, 170, 20);
-        jPanel6.add(jTextField16);
-        jTextField16.setBounds(110, 70, 170, 20);
+        cmbbranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Branch A", "Branch B", "Branch C" }));
+        jPanel6.add(cmbbranch);
+        cmbbranch.setBounds(500, 200, 140, 20);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel6.add(jComboBox1);
-        jComboBox1.setBounds(500, 200, 140, 20);
+        cmbcartype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "X-TRAIL", "MERCEDES", "PREMIO", "PRADO", "RANGE", "PROBOX", "T WAGON", "RAV4", "LIMO", " " }));
+        jPanel6.add(cmbcartype);
+        cmbcartype.setBounds(110, 30, 170, 20);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel6.add(jComboBox2);
-        jComboBox2.setBounds(110, 30, 170, 20);
+        cmbclass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economy", "Pride", "Laxury" }));
+        jPanel6.add(cmbclass);
+        cmbclass.setBounds(500, 240, 140, 20);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel6.add(jComboBox3);
-        jComboBox3.setBounds(500, 240, 140, 20);
-        jPanel6.add(jDateChooser1);
-        jDateChooser1.setBounds(500, 80, 170, 20);
-        jPanel6.add(jDateChooser2);
-        jDateChooser2.setBounds(500, 130, 170, 20);
-        jPanel6.add(jDateChooser3);
-        jDateChooser3.setBounds(110, 240, 170, 20);
+        jdstatinsurance.setDateFormatString("dd-MM-yyyy");
+        jPanel6.add(jdstatinsurance);
+        jdstatinsurance.setBounds(500, 80, 170, 20);
+
+        jdendinsurance.setDateFormatString("dd-MM-yyyy");
+        jPanel6.add(jdendinsurance);
+        jdendinsurance.setBounds(500, 130, 170, 20);
+
+        jdbought.setDateFormatString("dd-MM-yyyy");
+        jPanel6.add(jdbought);
+        jdbought.setBounds(110, 240, 170, 20);
+
+        cmbcarstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Hold", "Repare", "Broke down" }));
+        jPanel6.add(cmbcarstatus);
+        cmbcarstatus.setBounds(110, 110, 170, 20);
 
         jpaddcar.add(jPanel6);
         jPanel6.setBounds(10, 30, 720, 310);
 
         jPanel7.setLayout(null);
 
-        jButton7.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
-        jButton7.setText("Hold");
-        jPanel7.add(jButton7);
-        jButton7.setBounds(360, 10, 150, 50);
+        btnholdcar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        btnholdcar.setText("Hold");
+        jPanel7.add(btnholdcar);
+        btnholdcar.setBounds(360, 10, 150, 50);
 
-        jButton8.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
-        jButton8.setText("Delete");
-        jPanel7.add(jButton8);
-        jButton8.setBounds(523, 10, 150, 50);
+        btndeletecar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        btndeletecar.setText("Delete");
+        jPanel7.add(btndeletecar);
+        btndeletecar.setBounds(523, 10, 150, 50);
 
-        jButton9.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
-        jButton9.setText("Update ");
-        jPanel7.add(jButton9);
-        jButton9.setBounds(170, 10, 160, 50);
+        btnupdatecar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        btnupdatecar.setText("Update ");
+        jPanel7.add(btnupdatecar);
+        btnupdatecar.setBounds(170, 10, 160, 50);
 
-        jButton10.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
-        jButton10.setText("Add Car");
-        jPanel7.add(jButton10);
-        jButton10.setBounds(20, 10, 140, 50);
+        btnaddcar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        btnaddcar.setText("Add Car");
+        btnaddcar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddcarActionPerformed(evt);
+            }
+        });
+        jPanel7.add(btnaddcar);
+        btnaddcar.setBounds(20, 10, 140, 50);
 
         jpaddcar.add(jPanel7);
         jPanel7.setBounds(10, 350, 720, 70);
@@ -973,10 +995,6 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
-
     private void btnsearchreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchreportActionPerformed
         // TODO add your handling code here:
         if("".equals(txtcarnoreport.getText())){
@@ -994,6 +1012,42 @@ public class AdminHome extends javax.swing.JFrame {
     private void cmbcountiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcountiesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbcountiesActionPerformed
+
+    private void btnaddcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddcarActionPerformed
+        try {
+            // TODO add your handling code here:
+            java.util.Date dbought,insstart,insend;
+            java.sql.Date datecarbougt,insuranceend,insurancestart;
+            dbought =  jdbought.getDate();
+            insstart =  jdstatinsurance.getDate();
+            insend =  jdendinsurance.getDate();
+            datecarbougt = new java.sql.Date(dbought.getTime());
+            insurancestart = new java.sql.Date(insstart.getTime());
+            insuranceend = new java.sql.Date(insstart.getTime());
+
+            con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String sqladdcar = "INSERT INTO tbladmincar(CARTYPE,CARNO,DATEBOUGHT,CURRENTSTATUS,PRIMEYEARS,CAPACITY,INSURENCECOMPANY,"
+                    + "INSURENCASTART,INSURENCEEND,CARCLASS,BRANCH) VALUES ('"+cmbcartype.getSelectedItem()+"','"+txtcarno.getText()+"'"
+                    + ",'"+datecarbougt+"','"+cmbcarstatus.getSelectedItem()+"','"+txtcarprimeyears.getText()+"','"+txtcarcapacity.getText()+"'"
+                    + ",'"+txtinsurancecompany.getText()+"','"+insurancestart+"','"+insuranceend+"','"+cmbclass.getSelectedItem()+"'"
+                    + ",'"+cmbbranch.getSelectedItem()+"')";
+            st.execute(sqladdcar);
+            JOptionPane.showMessageDialog(null, "<HTML><i style=\"color: green; font-size: 12px;\">New Car Added</i></HTML>","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+                    txtcarno.setText("");
+                    txtcarprimeyears.setText("");
+                    txtcarcapacity.setText("");
+                    txtinsurancecompany.setText("");
+                    jdbought.setDate(null);
+                    jdstatinsurance.setDate(null);
+                    jdendinsurance.setDate(null);
+                    
+        } catch (SQLException ex) {
+            //Logger.getLogger(AdminHome.class.getName()).log(Level.SEVERE, null, ex);
+           // JOptionPane.showMessageDialog(null,"<html><i style=\"color: red;\">Error </i></html>"+ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+           JOptionPane.showMessageDialog(null,ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnaddcarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1031,14 +1085,21 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnaddcar;
+    private javax.swing.JButton btndeletecar;
+    private javax.swing.JButton btnholdcar;
     private javax.swing.JButton btnsearch;
     private javax.swing.JButton btnsearchreport;
     private javax.swing.JButton btnsearchstaffreport;
+    private javax.swing.JButton btnupdatecar;
+    private javax.swing.JComboBox<String> cmbbranch;
+    private javax.swing.JComboBox<String> cmbcarstatus;
+    private javax.swing.JComboBox<String> cmbcartype;
     private javax.swing.JComboBox<String> cmbcartypereport;
+    private javax.swing.JComboBox<String> cmbclass;
     private javax.swing.JComboBox<String> cmbcounties;
     private javax.swing.JComboBox<String> cmbtype;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
@@ -1047,19 +1108,10 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private com.toedter.calendar.JDateChooser jDateChooser4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1119,12 +1171,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
@@ -1140,6 +1187,9 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private com.toedter.calendar.JDateChooser jdbought;
+    private com.toedter.calendar.JDateChooser jdendinsurance;
+    private com.toedter.calendar.JDateChooser jdstatinsurance;
     private javax.swing.JMenuItem jmaddcar;
     private javax.swing.JMenuItem jmaddstaff;
     private javax.swing.JMenuItem jmcarpricing;
@@ -1162,6 +1212,10 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel lbtype;
     private javax.swing.JTable tblcarreport;
     private javax.swing.JTable tblstaffreport;
+    private javax.swing.JTextField txtcarcapacity;
+    private javax.swing.JTextField txtcarno;
     private javax.swing.JTextField txtcarnoreport;
+    private javax.swing.JTextField txtcarprimeyears;
+    private javax.swing.JTextField txtinsurancecompany;
     // End of variables declaration//GEN-END:variables
 }

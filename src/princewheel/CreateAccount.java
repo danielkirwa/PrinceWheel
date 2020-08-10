@@ -392,7 +392,8 @@ public class CreateAccount extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "<HTML><i style=\"color: green; font-size: 12px;\">ENGINEER ACCOUNT CREATED</i></HTML>","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);   
            
            }
-        } else{
+        } 
+        else{
            
             JOptionPane.showMessageDialog(null,"<html><i style=\"color: red;\">Password do not Match</i></html>","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
     
