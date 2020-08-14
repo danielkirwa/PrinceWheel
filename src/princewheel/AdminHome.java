@@ -6,8 +6,6 @@
 package princewheel;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -50,12 +48,20 @@ public class AdminHome extends javax.swing.JFrame {
     jpcarreports.setVisible(false);
     }
   final void loadiconsimages(){
-   ImageIcon  serch;
+   ImageIcon  serch,upda,del,ad,hod;
    serch  = new ImageIcon("images/search.png");
+   upda  = new ImageIcon("images/update.png");
+   del  = new ImageIcon("images/delete.png");
+   ad  = new ImageIcon("images/add.png");
+   hod  = new ImageIcon("images/hold.png");
    btnsearch.setIcon(serch);
    btnsearchreport.setIcon(serch);
    btnsearchstaffreport.setIcon(serch);
-   
+   btnsearchaddcar.setIcon(serch);
+   btnaddcar.setIcon(ad);
+   btnupdatecar.setIcon(upda);
+   btndeletecar.setIcon(del);
+   btnholdcar.setIcon(hod);
    }
   final void  carreporttable(){
   DefaultTableModel dtm = new DefaultTableModel();
@@ -155,6 +161,7 @@ public class AdminHome extends javax.swing.JFrame {
         jdendinsurance = new com.toedter.calendar.JDateChooser();
         jdbought = new com.toedter.calendar.JDateChooser();
         cmbcarstatus = new javax.swing.JComboBox<>();
+        btnsearchaddcar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         btnholdcar = new javax.swing.JButton();
         btndeletecar = new javax.swing.JButton();
@@ -470,7 +477,7 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel6.add(txtinsurancecompany);
         txtinsurancecompany.setBounds(500, 40, 190, 20);
         jPanel6.add(txtcarno);
-        txtcarno.setBounds(110, 70, 170, 20);
+        txtcarno.setBounds(110, 70, 110, 20);
 
         cmbbranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Branch A", "Branch B", "Branch C" }));
         jPanel6.add(cmbbranch);
@@ -500,26 +507,39 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel6.add(cmbcarstatus);
         cmbcarstatus.setBounds(110, 110, 170, 20);
 
+        btnsearchaddcar.setBackground(new java.awt.Color(123, 193, 249));
+        btnsearchaddcar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchaddcarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnsearchaddcar);
+        btnsearchaddcar.setBounds(230, 53, 50, 50);
+
         jpaddcar.add(jPanel6);
         jPanel6.setBounds(10, 30, 720, 310);
 
         jPanel7.setLayout(null);
 
+        btnholdcar.setBackground(new java.awt.Color(123, 193, 249));
         btnholdcar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         btnholdcar.setText("Hold");
         jPanel7.add(btnholdcar);
         btnholdcar.setBounds(360, 10, 150, 50);
 
+        btndeletecar.setBackground(new java.awt.Color(123, 193, 249));
         btndeletecar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         btndeletecar.setText("Delete");
         jPanel7.add(btndeletecar);
         btndeletecar.setBounds(523, 10, 150, 50);
 
+        btnupdatecar.setBackground(new java.awt.Color(123, 193, 249));
         btnupdatecar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         btnupdatecar.setText("Update ");
         jPanel7.add(btnupdatecar);
-        btnupdatecar.setBounds(170, 10, 160, 50);
+        btnupdatecar.setBounds(190, 10, 160, 50);
 
+        btnaddcar.setBackground(new java.awt.Color(123, 193, 249));
         btnaddcar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         btnaddcar.setText("Add Car");
         btnaddcar.addActionListener(new java.awt.event.ActionListener() {
@@ -528,7 +548,7 @@ public class AdminHome extends javax.swing.JFrame {
             }
         });
         jPanel7.add(btnaddcar);
-        btnaddcar.setBounds(20, 10, 140, 50);
+        btnaddcar.setBounds(10, 10, 170, 50);
 
         jpaddcar.add(jPanel7);
         jPanel7.setBounds(10, 350, 720, 70);
@@ -1014,8 +1034,14 @@ public class AdminHome extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbcountiesActionPerformed
 
     private void btnaddcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddcarActionPerformed
+    
+        // validate inputs
+        
+        if(!"".equals(txtcarno.getText()) && !"".equals(txtcarprimeyears.getText()) && !"".equals(txtcarcapacity.getText()) 
+                && !"".equals(txtinsurancecompany.getText())){
         try {
-            // TODO add your handling code here:
+            validate();
+            // try insert data to the database
             java.util.Date dbought,insstart,insend;
             java.sql.Date datecarbougt,insuranceend,insurancestart;
             dbought =  jdbought.getDate();
@@ -1043,11 +1069,56 @@ public class AdminHome extends javax.swing.JFrame {
                     jdendinsurance.setDate(null);
                     
         } catch (SQLException ex) {
-            //Logger.getLogger(AdminHome.class.getName()).log(Level.SEVERE, null, ex);
-           // JOptionPane.showMessageDialog(null,"<html><i style=\"color: red;\">Error </i></html>"+ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+            
            JOptionPane.showMessageDialog(null,ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
         }
+        }else{
+            JOptionPane.showMessageDialog(null,"Fill all the fields","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnaddcarActionPerformed
+
+    private void btnsearchaddcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchaddcarActionPerformed
+        // TODO add your handling code here:
+        //validate search box
+        if(!"".equals(txtcarno.getText())){
+            
+            try{
+                con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String selectecar = "SELECT * FROM tbladmincar WHERE CARNO = ? ";
+            pst = con.prepareStatement(selectecar);
+            pst.setString(1,txtcarno.getText());
+            rs = pst.executeQuery();
+                    
+            if(rs.next()){
+                txtcarno.setText(rs.getString("CARNO"));
+                txtcarprimeyears.setText(rs.getString("PRIMEYEARS"));
+                txtcarcapacity.setText(rs.getString("CAPACITY"));
+                txtinsurancecompany.setText(rs.getString("INSURENCECOMPANY"));
+                jdbought.setDate(rs.getDate("DATEBOUGHT"));
+                jdstatinsurance.setDate(rs.getDate("INSURENCASTART"));
+                jdendinsurance.setDate(rs.getDate("INSURENCEEND"));
+                cmbbranch.setSelectedItem(rs.getString("BRANCH"));
+                cmbclass.setSelectedItem(rs.getString("CARCLASS"));
+                cmbcarstatus.setSelectedItem(rs.getString("CURRENTSTATUS"));
+                cmbcartype.setSelectedItem(rs.getString("CARTYPE"));
+                
+            }else{
+                    JOptionPane.showMessageDialog(null,"Not found","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+                    txtcarno.setText("");
+                      txtcarno.requestFocus();
+                      
+            }
+                
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,"Error"+ ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+             JOptionPane.showMessageDialog(null,"Enter car No","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+            txtcarno.requestFocus(); 
+        }
+    }//GEN-LAST:event_btnsearchaddcarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1089,6 +1160,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JButton btndeletecar;
     private javax.swing.JButton btnholdcar;
     private javax.swing.JButton btnsearch;
+    private javax.swing.JButton btnsearchaddcar;
     private javax.swing.JButton btnsearchreport;
     private javax.swing.JButton btnsearchstaffreport;
     private javax.swing.JButton btnupdatecar;
