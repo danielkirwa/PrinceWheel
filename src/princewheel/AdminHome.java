@@ -429,7 +429,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         jLabel13.setText("Car Class  :");
         jPanel6.add(jLabel13);
-        jLabel13.setBounds(380, 240, 80, 14);
+        jLabel13.setBounds(350, 240, 110, 14);
 
         jLabel14.setText("Status :");
         jPanel6.add(jLabel14);
@@ -449,19 +449,19 @@ public class AdminHome extends javax.swing.JFrame {
 
         jLabel18.setText("Insurance Company:");
         jPanel6.add(jLabel18);
-        jLabel18.setBounds(380, 40, 110, 14);
+        jLabel18.setBounds(350, 40, 140, 14);
 
         jLabel19.setText("Insurance Date :");
         jPanel6.add(jLabel19);
-        jLabel19.setBounds(380, 90, 90, 14);
+        jLabel19.setBounds(350, 90, 120, 14);
 
         jLabel20.setText("Insurance Expiry :");
         jPanel6.add(jLabel20);
-        jLabel20.setBounds(380, 130, 100, 14);
+        jLabel20.setBounds(350, 130, 130, 14);
 
         jLabel21.setText("Allocated Banch :");
         jPanel6.add(jLabel21);
-        jLabel21.setBounds(380, 200, 110, 14);
+        jLabel21.setBounds(350, 200, 140, 14);
 
         jLabel22.setText("Car Type :");
         jPanel6.add(jLabel22);
@@ -469,7 +469,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         jLabel23.setText("Car Number :");
         jPanel6.add(jLabel23);
-        jLabel23.setBounds(10, 70, 70, 14);
+        jLabel23.setBounds(10, 70, 90, 14);
         jPanel6.add(txtcarcapacity);
         txtcarcapacity.setBounds(110, 160, 170, 20);
         jPanel6.add(txtcarprimeyears);
@@ -530,12 +530,22 @@ public class AdminHome extends javax.swing.JFrame {
         btndeletecar.setBackground(new java.awt.Color(123, 193, 249));
         btndeletecar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         btndeletecar.setText("Delete");
+        btndeletecar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeletecarActionPerformed(evt);
+            }
+        });
         jPanel7.add(btndeletecar);
         btndeletecar.setBounds(523, 10, 150, 50);
 
         btnupdatecar.setBackground(new java.awt.Color(123, 193, 249));
         btnupdatecar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         btnupdatecar.setText("Update ");
+        btnupdatecar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdatecarActionPerformed(evt);
+            }
+        });
         jPanel7.add(btnupdatecar);
         btnupdatecar.setBounds(190, 10, 160, 50);
 
@@ -1049,7 +1059,7 @@ public class AdminHome extends javax.swing.JFrame {
             insend =  jdendinsurance.getDate();
             datecarbougt = new java.sql.Date(dbought.getTime());
             insurancestart = new java.sql.Date(insstart.getTime());
-            insuranceend = new java.sql.Date(insstart.getTime());
+            insuranceend = new java.sql.Date(insend.getTime());
 
             con = DriverManager.getConnection(url,username,password);
             st = con.createStatement();
@@ -1106,6 +1116,12 @@ public class AdminHome extends javax.swing.JFrame {
             }else{
                     JOptionPane.showMessageDialog(null,"Not found","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
                     txtcarno.setText("");
+                    txtcarprimeyears.setText("");
+                    txtcarcapacity.setText("");
+                    txtinsurancecompany.setText("");
+                    jdbought.setDate(null);
+                    jdstatinsurance.setDate(null);
+                    jdendinsurance.setDate(null);
                       txtcarno.requestFocus();
                       
             }
@@ -1119,6 +1135,42 @@ public class AdminHome extends javax.swing.JFrame {
             txtcarno.requestFocus(); 
         }
     }//GEN-LAST:event_btnsearchaddcarActionPerformed
+
+    private void btndeletecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeletecarActionPerformed
+        // TODO add your handling code here:
+        // update car details
+     
+            
+    }//GEN-LAST:event_btndeletecarActionPerformed
+
+    private void btnupdatecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdatecarActionPerformed
+        // TODO add your handling code here:
+        //update car
+        try{
+            java.util.Date insstart,insend;
+            java.sql.Date insuranceend,insurancestart;
+            insstart =  jdstatinsurance.getDate();
+            insend =  jdendinsurance.getDate();
+            insurancestart = new java.sql.Date(insstart.getTime());
+            insuranceend = new java.sql.Date(insend.getTime());
+            
+           con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String sqlupdatecar = "UPDATE tbladmincar set CURRENTSTATUS ='"+cmbcarstatus.getSelectedItem()+"',INSURENCECOMPANY='"+txtinsurancecompany.getText()+"',"
+                    + "INSURENCASTART='"+insurancestart+"',INSURENCEEND='"+insuranceend+"',CARCLASS='"+cmbclass.getSelectedItem()+"'"
+                    + ",BRANCH='"+cmbbranch.getSelectedItem()+"' WHERE CARNO = ?";
+             pst = con.prepareStatement(sqlupdatecar);
+            pst.setString(1,txtcarno.getText());
+            pst.executeUpdate();
+            
+                JOptionPane.showMessageDialog(null,"Car updated","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+         
+            
+        }catch(SQLException ex){
+                         JOptionPane.showMessageDialog(null,"error" + ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+
+        }
+    }//GEN-LAST:event_btnupdatecarActionPerformed
 
     /**
      * @param args the command line arguments

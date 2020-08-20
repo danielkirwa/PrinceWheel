@@ -5,6 +5,11 @@
  */
 package princewheel;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +23,16 @@ public class AgentHome extends javax.swing.JFrame {
     /**
      * Creates new form AgentHome
      */
+    
+     Statement st;
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    String username = "root";
+    String password = "";
+    String url = "jdbc:mysql://localhost:3306/princewheeldb";
+    
     public AgentHome() {
         initComponents();
         hidepanels();
@@ -299,52 +314,56 @@ public class AgentHome extends javax.swing.JFrame {
 
         jLabel17.setText("Car Type  :");
         jPanel4.add(jLabel17);
-        jLabel17.setBounds(20, 50, 60, 14);
+        jLabel17.setBounds(20, 60, 60, 14);
 
         jLabel18.setText("Car No :");
         jPanel4.add(jLabel18);
-        jLabel18.setBounds(20, 80, 50, 14);
+        jLabel18.setBounds(20, 100, 50, 14);
 
         jLabel19.setText("Insurance Exp :");
         jPanel4.add(jLabel19);
-        jLabel19.setBounds(20, 110, 90, 14);
+        jLabel19.setBounds(20, 130, 90, 14);
 
         jLabel20.setText("curent State :");
         jPanel4.add(jLabel20);
-        jLabel20.setBounds(20, 140, 100, 14);
+        jLabel20.setBounds(20, 160, 100, 14);
 
         jLabel21.setText("Lease Date :");
         jPanel4.add(jLabel21);
-        jLabel21.setBounds(20, 170, 80, 14);
+        jLabel21.setBounds(20, 190, 80, 14);
 
         jLabel22.setText("End Leases  :");
         jPanel4.add(jLabel22);
-        jLabel22.setBounds(20, 200, 100, 14);
+        jLabel22.setBounds(20, 220, 80, 14);
 
         jDateChooser1.setDateFormatString("dd-MM-yyyy");
         jPanel4.add(jDateChooser1);
-        jDateChooser1.setBounds(110, 170, 190, 20);
+        jDateChooser1.setBounds(110, 190, 190, 20);
 
         jDateChooser2.setDateFormatString("dd-MM-yyyy");
         jPanel4.add(jDateChooser2);
-        jDateChooser2.setBounds(110, 200, 190, 20);
+        jDateChooser2.setBounds(110, 220, 190, 20);
 
-        cmbcartype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbcartype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "X-TRAIL", "MERCEDES", "PREMIO", "PRADO", "RANGE", "PROBOX", "T WAGON", "RAV4", "LIMO" }));
         jPanel4.add(cmbcartype);
-        cmbcartype.setBounds(120, 50, 170, 20);
+        cmbcartype.setBounds(120, 50, 120, 20);
         jPanel4.add(txtstate);
-        txtstate.setBounds(120, 140, 170, 20);
+        txtstate.setBounds(120, 160, 170, 20);
         jPanel4.add(txtinsuranceexp);
-        txtinsuranceexp.setBounds(120, 110, 170, 20);
+        txtinsuranceexp.setBounds(120, 130, 170, 20);
         jPanel4.add(txtcarno);
-        txtcarno.setBounds(120, 80, 170, 20);
+        txtcarno.setBounds(120, 100, 170, 20);
 
         btnsearchcar.setBackground(new java.awt.Color(123, 193, 249));
         btnsearchcar.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
-        btnsearchcar.setText("SEARCH");
         btnsearchcar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnsearchcar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchcarActionPerformed(evt);
+            }
+        });
         jPanel4.add(btnsearchcar);
-        btnsearchcar.setBounds(10, 250, 160, 40);
+        btnsearchcar.setBounds(250, 40, 50, 50);
 
         btncheckprice.setBackground(new java.awt.Color(123, 193, 249));
         btncheckprice.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
@@ -356,7 +375,7 @@ public class AgentHome extends javax.swing.JFrame {
             }
         });
         jPanel4.add(btncheckprice);
-        btncheckprice.setBounds(180, 250, 130, 40);
+        btncheckprice.setBounds(60, 250, 220, 40);
 
         jPanel2.add(jPanel4);
         jPanel4.setBounds(410, 10, 320, 300);
@@ -911,6 +930,36 @@ public class AgentHome extends javax.swing.JFrame {
         cmbcartype.setSelectedItem(dtm.getValueAt(selectedrowindex, 0).toString());
         
     }//GEN-LAST:event_tblavailablecarMouseClicked
+
+    private void btnsearchcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchcarActionPerformed
+        // TODO add your handling code here:
+        // SELECT CAR
+        try{
+                con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String selectecar = "SELECT * FROM tbladmincar WHERE CARNO = ? ";
+            pst = con.prepareStatement(selectecar);
+            pst.setString(1, (String) cmbcartype.getSelectedItem());
+            rs = pst.executeQuery();
+                    
+            if(rs.next()){
+                
+                    /* dtm.addColumn("CAR TYPE");
+                    dtm.addColumn("CAR NUMBER");
+                    dtm.addColumn("CURRENT STATE");
+                    dtm.addColumn("CAPACITY");
+                    tblavailablecar.("INSURANCE EXPIRY");*/
+                
+                
+            }else{
+                    JOptionPane.showMessageDialog(null,"Not found","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+                    
+            }
+        }catch(Exception ex){
+        JOptionPane.showMessageDialog(null,"Error" + ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnsearchcarActionPerformed
 
     /**
      * @param args the command line arguments
