@@ -5,11 +5,20 @@
  */
 package princewheel;
 
+import java.awt.Graphics;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import javax.naming.CommunicationException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -57,6 +66,7 @@ public class AgentHome extends javax.swing.JFrame {
   
     }
     final void loadibtnicon(){
+        // method to add icons to buttons
         ImageIcon srch1,srch2,clear1,requ;
     srch1 = new ImageIcon("images/search.png");
     srch2 = new ImageIcon("images/search.png");
@@ -93,14 +103,14 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtclientidnumber = new javax.swing.JTextField();
+        txtclientlname = new javax.swing.JTextField();
+        txtclientfname = new javax.swing.JTextField();
+        cmbclientgender = new javax.swing.JComboBox<>();
+        txtclientphone = new javax.swing.JTextField();
+        txtclientlicensenumber = new javax.swing.JTextField();
+        txtclientmname = new javax.swing.JTextField();
+        txtclientemail = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -109,10 +119,10 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jdleasedate = new com.toedter.calendar.JDateChooser();
+        jdleaseend = new com.toedter.calendar.JDateChooser();
         cmbcartype = new javax.swing.JComboBox<>();
-        txtstate = new javax.swing.JTextField();
+        txtcarstatus = new javax.swing.JTextField();
         txtinsuranceexp = new javax.swing.JTextField();
         txtcarno = new javax.swing.JTextField();
         btnsearchcar = new javax.swing.JButton();
@@ -126,13 +136,13 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
+        txtleasenetpay = new javax.swing.JTextField();
+        txtcautionamount = new javax.swing.JTextField();
+        txtleasediscount = new javax.swing.JTextField();
+        txtleasetotalamount = new javax.swing.JTextField();
+        txtleaserate = new javax.swing.JTextField();
+        txtleasecartype = new javax.swing.JTextField();
+        txtleaseperiod = new javax.swing.JTextField();
         btnleasecar = new javax.swing.JButton();
         jprequest = new javax.swing.JPanel();
         jpclearlease = new javax.swing.JPanel();
@@ -204,7 +214,7 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         btnsearchclientreceipt = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnprintclientreport = new javax.swing.JButton();
         jLabel42 = new javax.swing.JLabel();
         jTextField15 = new javax.swing.JTextField();
         jpcarreport = new javax.swing.JPanel();
@@ -282,24 +292,24 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel9.setText("Phone :");
         jPanel3.add(jLabel9);
         jLabel9.setBounds(10, 230, 60, 14);
-        jPanel3.add(jTextField1);
-        jTextField1.setBounds(100, 150, 140, 20);
-        jPanel3.add(jTextField2);
-        jTextField2.setBounds(80, 80, 130, 20);
-        jPanel3.add(jTextField3);
-        jTextField3.setBounds(80, 50, 130, 20);
+        jPanel3.add(txtclientidnumber);
+        txtclientidnumber.setBounds(100, 150, 140, 20);
+        jPanel3.add(txtclientlname);
+        txtclientlname.setBounds(80, 80, 130, 20);
+        jPanel3.add(txtclientfname);
+        txtclientfname.setBounds(80, 50, 130, 20);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
-        jPanel3.add(jComboBox1);
-        jComboBox1.setBounds(100, 110, 140, 20);
-        jPanel3.add(jTextField4);
-        jTextField4.setBounds(100, 230, 140, 20);
-        jPanel3.add(jTextField5);
-        jTextField5.setBounds(100, 190, 140, 20);
-        jPanel3.add(jTextField6);
-        jTextField6.setBounds(220, 50, 140, 20);
-        jPanel3.add(jTextField7);
-        jTextField7.setBounds(100, 260, 240, 20);
+        cmbclientgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
+        jPanel3.add(cmbclientgender);
+        cmbclientgender.setBounds(100, 110, 140, 20);
+        jPanel3.add(txtclientphone);
+        txtclientphone.setBounds(100, 230, 140, 20);
+        jPanel3.add(txtclientlicensenumber);
+        txtclientlicensenumber.setBounds(100, 190, 140, 20);
+        jPanel3.add(txtclientmname);
+        txtclientmname.setBounds(220, 50, 140, 20);
+        jPanel3.add(txtclientemail);
+        txtclientemail.setBounds(100, 260, 240, 20);
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(20, 10, 370, 300);
@@ -336,19 +346,24 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel4.add(jLabel22);
         jLabel22.setBounds(20, 220, 80, 14);
 
-        jDateChooser1.setDateFormatString("dd-MM-yyyy");
-        jPanel4.add(jDateChooser1);
-        jDateChooser1.setBounds(110, 190, 190, 20);
+        jdleasedate.setDateFormatString("dd-MM-yyyy");
+        jPanel4.add(jdleasedate);
+        jdleasedate.setBounds(110, 190, 190, 20);
 
-        jDateChooser2.setDateFormatString("dd-MM-yyyy");
-        jPanel4.add(jDateChooser2);
-        jDateChooser2.setBounds(110, 220, 190, 20);
+        jdleaseend.setDateFormatString("dd-MM-yyyy");
+        jPanel4.add(jdleaseend);
+        jdleaseend.setBounds(110, 220, 190, 20);
 
         cmbcartype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "X-TRAIL", "MERCEDES", "PREMIO", "PRADO", "RANGE", "PROBOX", "T WAGON", "RAV4", "LIMO" }));
+        cmbcartype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbcartypeActionPerformed(evt);
+            }
+        });
         jPanel4.add(cmbcartype);
         cmbcartype.setBounds(120, 50, 120, 20);
-        jPanel4.add(txtstate);
-        txtstate.setBounds(120, 160, 170, 20);
+        jPanel4.add(txtcarstatus);
+        txtcarstatus.setBounds(120, 160, 170, 20);
         jPanel4.add(txtinsuranceexp);
         txtinsuranceexp.setBounds(120, 130, 170, 20);
         jPanel4.add(txtcarno);
@@ -415,25 +430,30 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel16.setText("Coution Amount :");
         jPanel5.add(jLabel16);
         jLabel16.setBounds(20, 200, 100, 14);
-        jPanel5.add(jTextField8);
-        jTextField8.setBounds(120, 230, 130, 20);
-        jPanel5.add(jTextField9);
-        jTextField9.setBounds(120, 200, 130, 20);
-        jPanel5.add(jTextField10);
-        jTextField10.setBounds(120, 170, 130, 20);
-        jPanel5.add(jTextField11);
-        jTextField11.setBounds(120, 140, 130, 20);
-        jPanel5.add(jTextField12);
-        jTextField12.setBounds(120, 110, 130, 20);
-        jPanel5.add(jTextField13);
-        jTextField13.setBounds(120, 80, 130, 20);
-        jPanel5.add(jTextField14);
-        jTextField14.setBounds(120, 50, 130, 20);
+        jPanel5.add(txtleasenetpay);
+        txtleasenetpay.setBounds(120, 230, 130, 20);
+        jPanel5.add(txtcautionamount);
+        txtcautionamount.setBounds(120, 200, 130, 20);
+        jPanel5.add(txtleasediscount);
+        txtleasediscount.setBounds(120, 170, 130, 20);
+        jPanel5.add(txtleasetotalamount);
+        txtleasetotalamount.setBounds(120, 140, 130, 20);
+        jPanel5.add(txtleaserate);
+        txtleaserate.setBounds(120, 110, 130, 20);
+        jPanel5.add(txtleasecartype);
+        txtleasecartype.setBounds(120, 80, 130, 20);
+        jPanel5.add(txtleaseperiod);
+        txtleaseperiod.setBounds(120, 50, 130, 20);
 
         btnleasecar.setBackground(new java.awt.Color(123, 193, 249));
         btnleasecar.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         btnleasecar.setText("LEASE CAR");
         btnleasecar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnleasecar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnleasecarActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnleasecar);
         btnleasecar.setBounds(80, 263, 170, 30);
 
@@ -747,10 +767,15 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel9.add(btnsearchclientreceipt);
         btnsearchclientreceipt.setBounds(230, 10, 40, 40);
 
-        jButton1.setBackground(new java.awt.Color(123, 193, 249));
-        jButton1.setText("PRINT");
-        jPanel9.add(jButton1);
-        jButton1.setBounds(390, 10, 170, 40);
+        btnprintclientreport.setBackground(new java.awt.Color(123, 193, 249));
+        btnprintclientreport.setText("PRINT");
+        btnprintclientreport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnprintclientreportActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btnprintclientreport);
+        btnprintclientreport.setBounds(390, 10, 170, 40);
 
         jLabel42.setText("CLIENT ID :");
         jPanel9.add(jLabel42);
@@ -863,7 +888,7 @@ public class AgentHome extends javax.swing.JFrame {
 
     private void jmlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlogoutActionPerformed
         // TODO add your handling code here:
-        
+        // handle logout oparartions
         int action = JOptionPane.showConfirmDialog(null,"Are you sure want to Logou ?","PRINCE WHEEL",JOptionPane.YES_NO_OPTION);
         if(action == JOptionPane.YES_OPTION){
         this.dispose();
@@ -918,6 +943,78 @@ public class AgentHome extends javax.swing.JFrame {
 
     private void btncheckpriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncheckpriceActionPerformed
         // TODO add your handling code here:
+       
+        try{
+            
+             // initial some global variable to access in if ()block
+       
+        String dbprise = null,dbdiscount = null,dbcaution = null;
+        // find diffirence btw days
+        Date start = jdleasedate.getDate();
+        Date end = jdleaseend.getDate(); 
+        long diffInMillies = Math.abs(end.getTime() - start.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        txtleaseperiod.setText(String.valueOf(+diff));
+        
+        // add cartype to receipt
+        txtleasecartype.setText(cmbcartype.getSelectedItem().toString());
+        
+        // get the charge rate and discounts of selected cartype
+            
+            
+            con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String sqlselectrate = "SELECT * FROM tbladminpricing WHERE TYPE = ? ";
+            pst= con.prepareStatement(sqlselectrate);
+            pst.setString(1,(String)cmbcartype.getSelectedItem());
+            rs=pst.executeQuery();
+            
+            if(rs.next()){
+                
+              dbprise = rs.getString("RATE");
+              dbdiscount = rs.getString("DISCOUNT");
+              dbcaution = rs.getString("CAUTIONAMT"); 
+              JOptionPane.showMessageDialog(null,"Sending request...","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+              
+              
+              // perform calculation on the rate
+        //prepare values
+        int period ;
+        period = (int)diff;
+        double totalcost,netcost,price,caution,discountamt;
+        price= Integer.parseInt(dbprise);
+        caution = Integer.parseInt(dbcaution);
+         double discount = (double) Double.parseDouble(dbdiscount);
+        //do calculation
+        totalcost = period * price + caution;
+        discountamt = totalcost * discount;
+        netcost = totalcost - (totalcost * discount);
+      
+        
+        // display value for receipt purpose
+        txtleaserate.setText("Ksh. "+price);
+        txtleasetotalamount.setText("Ksh. "+totalcost);
+        txtleasediscount.setText("Ksh. "+discountamt);
+        txtcautionamount.setText("Ksh. "+caution);
+        txtleasenetpay.setText("Ksh. "+netcost);
+            }else{
+                JOptionPane.showMessageDialog(null,"Price not found","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"error" + ex,"PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+            
+        }catch(NullPointerException npx){
+        JOptionPane.showMessageDialog(null,"Please select Date !","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btncheckpriceActionPerformed
 
     private void tblavailablecarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblavailablecarMouseClicked
@@ -926,7 +1023,7 @@ public class AgentHome extends javax.swing.JFrame {
         int selectedrowindex = tblavailablecar.getSelectedRow();
         txtcarno.setText(dtm.getValueAt(selectedrowindex, 1).toString());
         txtinsuranceexp.setText(dtm.getValueAt(selectedrowindex, 4).toString());
-        txtstate.setText(dtm.getValueAt(selectedrowindex, 2).toString());
+        txtcarstatus.setText(dtm.getValueAt(selectedrowindex, 2).toString());
         cmbcartype.setSelectedItem(dtm.getValueAt(selectedrowindex, 0).toString());
         
     }//GEN-LAST:event_tblavailablecarMouseClicked
@@ -934,32 +1031,126 @@ public class AgentHome extends javax.swing.JFrame {
     private void btnsearchcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchcarActionPerformed
         // TODO add your handling code here:
         // SELECT CAR
+        
+        //clear the table if there is any data upon query
+         DefaultTableModel dtm = new DefaultTableModel();
+    dtm.addColumn("CAR TYPE");
+    dtm.addColumn("CAR NUMBER");
+    dtm.addColumn("CURRENT STATE");
+    dtm.addColumn("CAPACITY");
+    dtm.addColumn("INSURANCE EXPIRY");
+    tblavailablecar.setModel(dtm);
+    // try select specific car  data to populated the table
         try{
                 con = DriverManager.getConnection(url,username,password);
             st = con.createStatement();
-            String selectecar = "SELECT * FROM tbladmincar WHERE CARNO = ? ";
+            String selectecar = "SELECT * FROM tbladmincar WHERE CARTYPE = ? ";
             pst = con.prepareStatement(selectecar);
             pst.setString(1, (String) cmbcartype.getSelectedItem());
             rs = pst.executeQuery();
-                    
-            if(rs.next()){
-                
-                    /* dtm.addColumn("CAR TYPE");
-                    dtm.addColumn("CAR NUMBER");
-                    dtm.addColumn("CURRENT STATE");
-                    dtm.addColumn("CAPACITY");
-                    tblavailablecar.("INSURANCE EXPIRY");*/
-                
-                
-            }else{
-                    JOptionPane.showMessageDialog(null,"Not found","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
-                    
+                  
+            while(rs.next()){
+               String cartype = rs.getString("CARTYPE");
+               String carNO = rs.getString("CARNO");
+               String carstatus = rs.getString("CURRENTSTATUS");
+               String carcapasity = rs.getString("CAPACITY");
+               String carinsexp = rs.getString("INSURENCEEND");
+               
+               //ARRAY DATA TO DISPLAY
+               String tbldata []= {cartype,carNO,carstatus,carcapasity,carinsexp};
+               DefaultTableModel dtmdata = (DefaultTableModel)tblavailablecar.getModel();
+               dtmdata.addRow(tbldata);
             }
-        }catch(Exception ex){
+        }catch(SQLException ex){
         JOptionPane.showMessageDialog(null,"Error" + ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
         }
         
+        
     }//GEN-LAST:event_btnsearchcarActionPerformed
+
+    private void btnprintclientreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprintclientreportActionPerformed
+        // TODO add your handling code here:
+        //print the receipt of the client 
+        PrinterJob pjob = PrinterJob.getPrinterJob();
+        pjob.setJobName("Client Report");
+        pjob.setPrintable((Graphics pg, PageFormat pf, int pagenum) -> {
+            pf.setOrientation(PageFormat.LANDSCAPE);
+            if(pagenum > 0){
+                return Printable.NO_SUCH_PAGE;
+            }
+            java.awt.Graphics2D g2 = (java.awt.Graphics2D)pg;
+            g2.translate(pf.getImageableX(), pf.getImageableY());
+            g2.scale(0.63, 0.97);
+            jpclientreceipt.paint(g2);
+            return Printable.PAGE_EXISTS;
+        });
+        boolean ok = pjob.printDialog();
+        if(ok){
+            try{
+                pjob.print();
+            }catch(PrinterException px){
+                JOptionPane.showMessageDialog(null, "Print Error" + px,"PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnprintclientreportActionPerformed
+
+    private void cmbcartypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcartypeActionPerformed
+        // TODO add your handling code here:
+        
+       
+        
+    }//GEN-LAST:event_cmbcartypeActionPerformed
+
+    private void btnleasecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnleasecarActionPerformed
+        // TODO add your handling code here:
+        // validate client data
+        if(!"".equals(txtclientfname.getText()) && !"".equals(txtclientmname.getText()) &&
+                !"".equals(txtclientidnumber.getText()) && !"".equals(txtclientlicensenumber.getText()) && !"".equals(txtclientphone.getText())){
+            String cleintfname,clientmname,clientlname,clientgender,clientidnumber,clientlicense,clientemail,clientphone;
+            cleintfname=txtclientfname.getText();
+            clientmname=txtclientmname.getText();
+            clientlname=txtclientlname.getText();        
+            clientidnumber=txtclientidnumber.getText();
+            clientlicense=txtclientlicensenumber.getText();        
+            clientphone=txtclientphone.getText(); 
+            clientemail=txtclientemail.getText();
+            clientgender=(String) cmbclientgender.getSelectedItem();
+                  
+            try{
+                //get date to insert to database
+                
+                 java.util.Date lsstart,lsend;
+            java.sql.Date leaseend,leasestart;
+            lsstart =  jdleasedate.getDate();
+            lsend =  jdleaseend.getDate();
+            leasestart = new java.sql.Date(lsstart.getTime());
+            leaseend = new java.sql.Date(lsend.getTime());
+             String leasestatus = "ON LEASE";   
+                
+                
+            con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String sqlinsertclient = "INSERT INTO tblagentlease(LEASEID,CARTYPE,CARNO,INSURANCEEXPIRE,CARSTATUS,FNAME,MNAME,LNAME,IDNUMBER,"
+                    + "PHONE,EMAIL,LICENSENO,GENDER,LEASEDATE,LEASEENDDATE,PERIOD,RATE,TOTALAMOUNT,CAUTIONAMOUNT,DISCOUNT,NETPAY,LEASESTATUS)"
+                    + " VALUES ('"+clientidnumber+"','"+cmbcartype.getSelectedItem()+"','"+txtcarno.getText()+"','"+txtinsuranceexp.getText()+"','"+txtcarstatus.getText()+"',"
+                    + "'"+cleintfname+"','"+clientmname+"','"+clientlname+"','"+clientidnumber+"','"+clientphone+"','"+clientemail+"',"
+                    + "'"+clientlicense+"','"+clientgender+"','"+leasestart+"','"+leaseend+"','"+txtleaseperiod.getText()+"',"
+                    + "'"+txtleaserate.getText()+"','"+txtleasetotalamount.getText()+"','"+txtcautionamount.getText()+"','"+txtleasediscount.getText()+"',"
+                    + "'"+txtleasenetpay.getText()+"','"+leasestatus+"')";
+            
+            st.execute(sqlinsertclient);
+            JOptionPane.showMessageDialog(null, "<HTML><i style=\"color: green; font-size: 12px;\">New Lease Added</i></HTML>","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+                    
+            
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, "error"+ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+            }
+            
+            
+        }else{
+               JOptionPane.showMessageDialog(null, "<HTML><i style=\"color: red; font-size: 12px;\">Fill cleint details !</i></HTML>","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnleasecarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1001,17 +1192,15 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JButton btnclearlease;
     private javax.swing.JButton btnextendlease;
     private javax.swing.JButton btnleasecar;
+    private javax.swing.JButton btnprintclientreport;
     private javax.swing.JButton btnrequestexd;
     private javax.swing.JButton btnsearchcar;
     private javax.swing.JButton btnsearchclear;
     private javax.swing.JButton btnsearchclientreceipt;
     private javax.swing.JButton btnsearchexd;
     private javax.swing.JComboBox<String> cmbcartype;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbclientgender;
     private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1090,16 +1279,9 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
@@ -1110,14 +1292,9 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private com.toedter.calendar.JDateChooser jdleasedate;
+    private com.toedter.calendar.JDateChooser jdleaseend;
     private javax.swing.JMenuItem jmcarreport;
     private javax.swing.JMenuItem jmclearlease;
     private javax.swing.JMenuItem jmclientreport;
@@ -1132,7 +1309,21 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jprequest;
     private javax.swing.JTable tblavailablecar;
     private javax.swing.JTextField txtcarno;
+    private javax.swing.JTextField txtcarstatus;
+    private javax.swing.JTextField txtcautionamount;
+    private javax.swing.JTextField txtclientemail;
+    private javax.swing.JTextField txtclientfname;
+    private javax.swing.JTextField txtclientidnumber;
+    private javax.swing.JTextField txtclientlicensenumber;
+    private javax.swing.JTextField txtclientlname;
+    private javax.swing.JTextField txtclientmname;
+    private javax.swing.JTextField txtclientphone;
     private javax.swing.JTextField txtinsuranceexp;
-    private javax.swing.JTextField txtstate;
+    private javax.swing.JTextField txtleasecartype;
+    private javax.swing.JTextField txtleasediscount;
+    private javax.swing.JTextField txtleasenetpay;
+    private javax.swing.JTextField txtleaseperiod;
+    private javax.swing.JTextField txtleaserate;
+    private javax.swing.JTextField txtleasetotalamount;
     // End of variables declaration//GEN-END:variables
 }

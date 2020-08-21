@@ -5,6 +5,11 @@
  */
 package princewheel;
 
+import java.awt.Graphics;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.sql.*;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -36,7 +41,7 @@ public class AdminHome extends javax.swing.JFrame {
         hidecomponets();
         loadiconsimages();
         carreporttable();
-        staffreporttable();
+        
     }
    final void hidecomponets(){
     jpstaffaccount.setVisible(false);
@@ -75,17 +80,7 @@ public class AdminHome extends javax.swing.JFrame {
   dtm.addColumn("Discount");
    tblcarreport.setModel(dtm);
   }
-  final void staffreporttable(){
-   DefaultTableModel dtm = new DefaultTableModel();
-  dtm.addColumn("E-Code ");
-  dtm.addColumn("Category");
-  dtm.addColumn("Acc Status");
-  dtm.addColumn("Age");
-  dtm.addColumn("Avilability");
-  dtm.addColumn("Enroll");
-  dtm.addColumn("Asigns");
-   tblstaffreport.setModel(dtm);
-  }
+ 
     
 
     /**
@@ -213,9 +208,27 @@ public class AdminHome extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         btnsearchstaffreport = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jPanel12 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblstaffreport = new javax.swing.JTable();
+        jpstaffreceipt = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
         jporgreport = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -748,36 +761,116 @@ public class AdminHome extends javax.swing.JFrame {
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel11.add(jComboBox4);
         jComboBox4.setBounds(120, 40, 130, 20);
+
+        btnsearchstaffreport.setBackground(new java.awt.Color(123, 193, 249));
         jPanel11.add(btnsearchstaffreport);
         btnsearchstaffreport.setBounds(260, 10, 50, 50);
 
+        jButton14.setBackground(new java.awt.Color(123, 193, 249));
         jButton14.setText("PRINT");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
         jPanel11.add(jButton14);
         jButton14.setBounds(619, 23, 140, 40);
 
         jpstaffreport.add(jPanel11);
-        jPanel11.setBounds(90, 40, 770, 70);
+        jPanel11.setBounds(90, 20, 770, 70);
 
-        jPanel12.setLayout(null);
+        jpstaffreceipt.setBackground(new java.awt.Color(255, 255, 255));
+        jpstaffreceipt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(123, 193, 249)));
+        jpstaffreceipt.setLayout(null);
 
-        tblstaffreport.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tblstaffreport);
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel13.setLayout(null);
 
-        jPanel12.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 10, 960, 260);
+        jLabel42.setText("NAME :");
+        jPanel13.add(jLabel42);
+        jLabel42.setBounds(10, 20, 50, 14);
 
-        jpstaffreport.add(jPanel12);
-        jPanel12.setBounds(10, 130, 980, 280);
+        jLabel43.setText("POSITION");
+        jPanel13.add(jLabel43);
+        jLabel43.setBounds(10, 60, 70, 14);
+
+        jLabel44.setText("PHONE :");
+        jPanel13.add(jLabel44);
+        jLabel44.setBounds(10, 100, 60, 14);
+
+        jLabel45.setText("EMAIL :");
+        jPanel13.add(jLabel45);
+        jLabel45.setBounds(10, 130, 60, 14);
+
+        jLabel46.setText("ACCOUNT STATUS :");
+        jPanel13.add(jLabel46);
+        jLabel46.setBounds(10, 160, 120, 14);
+
+        jLabel47.setText("AGE :");
+        jPanel13.add(jLabel47);
+        jLabel47.setBounds(10, 190, 27, 14);
+
+        jLabel48.setText("CATEGORY :");
+        jPanel13.add(jLabel48);
+        jLabel48.setBounds(10, 220, 61, 14);
+
+        jpstaffreceipt.add(jPanel13);
+        jPanel13.setBounds(10, 50, 400, 260);
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel14.setLayout(null);
+
+        jLabel49.setText("CAR LEASED");
+        jPanel14.add(jLabel49);
+        jLabel49.setBounds(10, 20, 70, 14);
+
+        jLabel50.setText("AVAILABILITY");
+        jPanel14.add(jLabel50);
+        jLabel50.setBounds(10, 60, 67, 14);
+
+        jLabel51.setText("ASSETS");
+        jPanel14.add(jLabel51);
+        jLabel51.setBounds(10, 100, 37, 14);
+
+        jLabel52.setText("REQUEST");
+        jPanel14.add(jLabel52);
+        jLabel52.setBounds(10, 130, 46, 14);
+
+        jLabel53.setText("REQUEST STATUS");
+        jPanel14.add(jLabel53);
+        jLabel53.setBounds(10, 160, 87, 14);
+
+        jLabel54.setText("BRANCH");
+        jPanel14.add(jLabel54);
+        jLabel54.setBounds(10, 190, 41, 14);
+
+        jLabel55.setText("SALARY");
+        jPanel14.add(jLabel55);
+        jLabel55.setBounds(10, 220, 38, 14);
+
+        jpstaffreceipt.add(jPanel14);
+        jPanel14.setBounds(420, 50, 380, 260);
+
+        jLabel39.setText("Satff ID :");
+        jpstaffreceipt.add(jLabel39);
+        jLabel39.setBounds(20, 20, 60, 14);
+        jpstaffreceipt.add(jTextField11);
+        jTextField11.setBounds(80, 20, 120, 20);
+
+        jLabel40.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
+        jLabel40.setText("PRINCE   WHEELE STAFF REPORT ");
+        jpstaffreceipt.add(jLabel40);
+        jLabel40.setBounds(230, 10, 350, 20);
+
+        jLabel41.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
+        jLabel41.setText("DATE :");
+        jpstaffreceipt.add(jLabel41);
+        jLabel41.setBounds(610, 10, 180, 20);
+
+        jpstaffreport.add(jpstaffreceipt);
+        jpstaffreceipt.setBounds(70, 100, 810, 320);
 
         jPanel1.add(jpstaffreport);
         jpstaffreport.setBounds(40, 80, 1010, 430);
@@ -1172,6 +1265,31 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnupdatecarActionPerformed
 
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+         PrinterJob pjob = PrinterJob.getPrinterJob();
+        pjob.setJobName("Client Report");
+        pjob.setPrintable((Graphics pg, PageFormat pf, int pagenum) -> {
+            pf.setOrientation(PageFormat.LANDSCAPE);
+            if(pagenum > 0){
+                return Printable.NO_SUCH_PAGE;
+            }
+            java.awt.Graphics2D g2 = (java.awt.Graphics2D)pg;
+            g2.translate(pf.getImageableX(), pf.getImageableY());
+            g2.scale(0.63, 0.97);
+            jpstaffreceipt.paint(g2);
+            return Printable.PAGE_EXISTS;
+        });
+        boolean ok = pjob.printDialog();
+        if(ok){
+            try{
+                pjob.print();
+            }catch(PrinterException px){
+                JOptionPane.showMessageDialog(null, "Print Error" + px,"PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1269,8 +1387,25 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1282,7 +1417,8 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1292,9 +1428,9 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
@@ -1329,13 +1465,13 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jpcarreports;
     private javax.swing.JPanel jporgreport;
     private javax.swing.JPanel jpstaffaccount;
+    private javax.swing.JPanel jpstaffreceipt;
     private javax.swing.JPanel jpstaffreport;
     private javax.swing.JLabel lbcoution;
     private javax.swing.JLabel lbdiscount;
     private javax.swing.JLabel lbprice;
     private javax.swing.JLabel lbtype;
     private javax.swing.JTable tblcarreport;
-    private javax.swing.JTable tblstaffreport;
     private javax.swing.JTextField txtcarcapacity;
     private javax.swing.JTextField txtcarno;
     private javax.swing.JTextField txtcarnoreport;
