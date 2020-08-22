@@ -6,6 +6,7 @@
 package princewheel;
 
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -16,11 +17,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import javax.naming.CommunicationException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,6 +49,8 @@ public class AgentHome extends javax.swing.JFrame {
         hidepanels();
         loadavailablecars();
         loadibtnicon();
+        loaddate();
+        loadtime();
     }
    final  void hidepanels(){
     jprequest.setVisible(false);
@@ -80,6 +84,19 @@ public class AgentHome extends javax.swing.JFrame {
     btncheckprice.setIcon(requ);
     btnsearchclientreceipt.setIcon(srch1);
     }
+    final void loaddate(){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        lbdate.setText("Date :" + sdf.format(date));
+    }
+     final void loadtime(){
+        new Timer (0, (ActionEvent ae) -> {
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("hh-mm-ss a");
+            lbtime.setText("Time :" + sdf.format(date));
+        }){}.start();
+        
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -191,27 +208,26 @@ public class AgentHome extends javax.swing.JFrame {
         jpclientreport = new javax.swing.JPanel();
         jpclientreceipt = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
+        lbleaseend = new javax.swing.JLabel();
+        lbleasedate = new javax.swing.JLabel();
+        lbleasecarstate = new javax.swing.JLabel();
+        lbleasecarno = new javax.swing.JLabel();
+        lbleasecartype = new javax.swing.JLabel();
+        lbleaseperiod = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
+        lbleaserate = new javax.swing.JLabel();
+        lbleasediscount = new javax.swing.JLabel();
+        lbcautionamount = new javax.swing.JLabel();
+        lbleasetotalcost = new javax.swing.JLabel();
+        lbleasenetpay = new javax.swing.JLabel();
+        lbleasetype = new javax.swing.JLabel();
+        lbclientid = new javax.swing.JLabel();
+        lbdate = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
+        lbtime = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         btnsearchclientreceipt = new javax.swing.JButton();
         btnprintclientreport = new javax.swing.JButton();
@@ -664,33 +680,29 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel10.setLayout(null);
 
-        jLabel48.setText("Car Capasity :");
-        jPanel10.add(jLabel48);
-        jLabel48.setBounds(30, 220, 260, 14);
+        lbleaseend.setText("End Lease :");
+        jPanel10.add(lbleaseend);
+        lbleaseend.setBounds(30, 190, 250, 14);
 
-        jLabel49.setText("End Lease :");
-        jPanel10.add(jLabel49);
-        jLabel49.setBounds(30, 190, 250, 14);
+        lbleasedate.setText("Lease Date");
+        jPanel10.add(lbleasedate);
+        lbleasedate.setBounds(30, 160, 250, 14);
 
-        jLabel50.setText("Lease Date");
-        jPanel10.add(jLabel50);
-        jLabel50.setBounds(30, 160, 250, 14);
+        lbleasecarstate.setText("Current State :");
+        jPanel10.add(lbleasecarstate);
+        lbleasecarstate.setBounds(30, 130, 250, 14);
 
-        jLabel51.setText("Current State :");
-        jPanel10.add(jLabel51);
-        jLabel51.setBounds(30, 130, 250, 14);
+        lbleasecarno.setText("Car NO :");
+        jPanel10.add(lbleasecarno);
+        lbleasecarno.setBounds(30, 100, 250, 14);
 
-        jLabel52.setText("Car NO :");
-        jPanel10.add(jLabel52);
-        jLabel52.setBounds(30, 100, 250, 14);
+        lbleasecartype.setText("Car Type :");
+        jPanel10.add(lbleasecartype);
+        lbleasecartype.setBounds(30, 70, 240, 14);
 
-        jLabel53.setText("Car Type :");
-        jPanel10.add(jLabel53);
-        jLabel53.setBounds(30, 70, 240, 14);
-
-        jLabel54.setText("Lease Period :");
-        jPanel10.add(jLabel54);
-        jLabel54.setBounds(30, 250, 250, 14);
+        lbleaseperiod.setText("Lease Period :");
+        jPanel10.add(lbleaseperiod);
+        lbleaseperiod.setBounds(30, 220, 250, 14);
 
         jLabel55.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         jLabel55.setText("Lease  information");
@@ -709,40 +721,40 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel11.add(jLabel56);
         jLabel56.setBounds(20, 20, 250, 20);
 
-        jLabel57.setText("Lease Rate :");
-        jPanel11.add(jLabel57);
-        jLabel57.setBounds(30, 70, 260, 14);
+        lbleaserate.setText("Lease Rate :");
+        jPanel11.add(lbleaserate);
+        lbleaserate.setBounds(30, 70, 260, 14);
 
-        jLabel58.setText("Discount Allowed");
-        jPanel11.add(jLabel58);
-        jLabel58.setBounds(30, 100, 220, 14);
+        lbleasediscount.setText("Discount Allowed");
+        jPanel11.add(lbleasediscount);
+        lbleasediscount.setBounds(30, 100, 220, 14);
 
-        jLabel59.setText("Caution Amt :");
-        jPanel11.add(jLabel59);
-        jLabel59.setBounds(30, 130, 250, 14);
+        lbcautionamount.setText("Caution Amt :");
+        jPanel11.add(lbcautionamount);
+        lbcautionamount.setBounds(30, 130, 250, 14);
 
-        jLabel60.setText("Total Cost :");
-        jPanel11.add(jLabel60);
-        jLabel60.setBounds(30, 160, 260, 14);
+        lbleasetotalcost.setText("Total Cost :");
+        jPanel11.add(lbleasetotalcost);
+        lbleasetotalcost.setBounds(30, 160, 260, 14);
 
-        jLabel61.setText("Net Pay :");
-        jPanel11.add(jLabel61);
-        jLabel61.setBounds(30, 190, 260, 14);
+        lbleasenetpay.setText("Net Pay :");
+        jPanel11.add(lbleasenetpay);
+        lbleasenetpay.setBounds(30, 190, 260, 14);
 
-        jLabel62.setText("Lease Type :");
-        jPanel11.add(jLabel62);
-        jLabel62.setBounds(30, 250, 260, 14);
+        lbleasetype.setText("Lease Type :");
+        jPanel11.add(lbleasetype);
+        lbleasetype.setBounds(30, 250, 260, 14);
 
         jpclientreceipt.add(jPanel11);
         jPanel11.setBounds(350, 80, 360, 290);
 
-        jLabel43.setText("Client ID :");
-        jpclientreceipt.add(jLabel43);
-        jLabel43.setBounds(70, 30, 60, 14);
+        lbclientid.setText("Client ID :");
+        jpclientreceipt.add(lbclientid);
+        lbclientid.setBounds(70, 30, 120, 14);
 
-        jLabel44.setText("Date :");
-        jpclientreceipt.add(jLabel44);
-        jLabel44.setBounds(580, 20, 50, 14);
+        lbdate.setText("Date :");
+        jpclientreceipt.add(lbdate);
+        lbdate.setBounds(580, 20, 120, 14);
 
         jLabel45.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         jLabel45.setText("PRINCE  WHEEL ");
@@ -753,9 +765,9 @@ public class AgentHome extends javax.swing.JFrame {
         jpclientreceipt.add(jLabel46);
         jLabel46.setBounds(280, 40, 210, 14);
 
-        jLabel47.setText("Time :");
-        jpclientreceipt.add(jLabel47);
-        jLabel47.setBounds(580, 40, 40, 14);
+        lbtime.setText("Time :");
+        jpclientreceipt.add(lbtime);
+        lbtime.setBounds(580, 40, 120, 14);
 
         jpclientreport.add(jpclientreceipt);
         jpclientreceipt.setBounds(30, 90, 730, 370);
@@ -1127,7 +1139,7 @@ public class AgentHome extends javax.swing.JFrame {
             leaseend = new java.sql.Date(lsend.getTime());
              String leasestatus = "ON LEASE";   
                 
-                
+              
             con = DriverManager.getConnection(url,username,password);
             st = con.createStatement();
             String sqlinsertclient = "INSERT INTO tblagentlease(LEASEID,CARTYPE,CARNO,INSURANCEEXPIRE,CARSTATUS,FNAME,MNAME,LNAME,IDNUMBER,"
@@ -1140,7 +1152,24 @@ public class AgentHome extends javax.swing.JFrame {
             
             st.execute(sqlinsertclient);
             JOptionPane.showMessageDialog(null, "<HTML><i style=\"color: green; font-size: 12px;\">New Lease Added</i></HTML>","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
-                    
+        
+            
+            // send data to the receipt 
+            
+            lbclientid.setText( "ID : " +clientidnumber);
+            lbleasecartype.setText("Car Type : " + (String) cmbcartype.getSelectedItem());
+            lbleasecarno.setText("Car NO : " + txtcarno.getText());
+            lbleasecarstate.setText("Car Status : " +txtcarstatus.getText());
+            lbleasedate.setText("Lease Date : " +leasestart);
+            lbleaseend.setText("Lease End : " + leaseend);
+            lbleaseperiod.setText("Lease Period : " + txtleaseperiod.getText()+" days");
+            lbleaserate.setText("Lease Rate : " + txtleaserate.getText());
+            lbleasediscount.setText("Allowed Discout : " + txtleasediscount.getText());
+            lbcautionamount.setText("Caution Amount : " + txtcautionamount.getText());
+            lbleasetotalcost.setText("Total Cost : " + txtleasetotalamount.getText());
+            lbleasenetpay.setText("Net Pay : " + txtleasenetpay.getText());
+            lbleasetype.setText("Lease Type : Normal");
+            
             
             }catch(SQLException ex){
                 JOptionPane.showMessageDialog(null, "error"+ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
@@ -1239,28 +1268,12 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1307,6 +1320,21 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jpclientreport;
     private javax.swing.JPanel jpleasenow;
     private javax.swing.JPanel jprequest;
+    private javax.swing.JLabel lbcautionamount;
+    private javax.swing.JLabel lbclientid;
+    private javax.swing.JLabel lbdate;
+    private javax.swing.JLabel lbleasecarno;
+    private javax.swing.JLabel lbleasecarstate;
+    private javax.swing.JLabel lbleasecartype;
+    private javax.swing.JLabel lbleasedate;
+    private javax.swing.JLabel lbleasediscount;
+    private javax.swing.JLabel lbleaseend;
+    private javax.swing.JLabel lbleasenetpay;
+    private javax.swing.JLabel lbleaseperiod;
+    private javax.swing.JLabel lbleaserate;
+    private javax.swing.JLabel lbleasetotalcost;
+    private javax.swing.JLabel lbleasetype;
+    private javax.swing.JLabel lbtime;
     private javax.swing.JTable tblavailablecar;
     private javax.swing.JTextField txtcarno;
     private javax.swing.JTextField txtcarstatus;

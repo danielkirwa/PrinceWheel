@@ -1319,17 +1319,7 @@
                     <Property name="useNullLayout" type="boolean" value="true"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel48">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Car Capasity :"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="30" y="220" width="260" height="-1"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel49">
+                    <Component class="javax.swing.JLabel" name="lbleaseend">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="End Lease :"/>
                       </Properties>
@@ -1339,7 +1329,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel50">
+                    <Component class="javax.swing.JLabel" name="lbleasedate">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Lease Date"/>
                       </Properties>
@@ -1349,7 +1339,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel51">
+                    <Component class="javax.swing.JLabel" name="lbleasecarstate">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Current State :"/>
                       </Properties>
@@ -1359,7 +1349,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel52">
+                    <Component class="javax.swing.JLabel" name="lbleasecarno">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Car NO :"/>
                       </Properties>
@@ -1369,7 +1359,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel53">
+                    <Component class="javax.swing.JLabel" name="lbleasecartype">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Car Type :"/>
                       </Properties>
@@ -1379,13 +1369,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel54">
+                    <Component class="javax.swing.JLabel" name="lbleaseperiod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Lease Period :"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="30" y="250" width="250" height="-1"/>
+                          <AbsoluteConstraints x="30" y="220" width="250" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1438,7 +1428,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel57">
+                    <Component class="javax.swing.JLabel" name="lbleaserate">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Lease Rate :"/>
                       </Properties>
@@ -1448,7 +1438,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel58">
+                    <Component class="javax.swing.JLabel" name="lbleasediscount">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Discount Allowed"/>
                       </Properties>
@@ -1458,7 +1448,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel59">
+                    <Component class="javax.swing.JLabel" name="lbcautionamount">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Caution Amt :"/>
                       </Properties>
@@ -1468,7 +1458,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel60">
+                    <Component class="javax.swing.JLabel" name="lbleasetotalcost">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Total Cost :"/>
                       </Properties>
@@ -1478,7 +1468,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel61">
+                    <Component class="javax.swing.JLabel" name="lbleasenetpay">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Net Pay :"/>
                       </Properties>
@@ -1488,7 +1478,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel62">
+                    <Component class="javax.swing.JLabel" name="lbleasetype">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Lease Type :"/>
                       </Properties>
@@ -1500,23 +1490,23 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel43">
+                <Component class="javax.swing.JLabel" name="lbclientid">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Client ID :"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="70" y="30" width="60" height="-1"/>
+                      <AbsoluteConstraints x="70" y="30" width="120" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel44">
+                <Component class="javax.swing.JLabel" name="lbdate">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Date :"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="580" y="20" width="50" height="-1"/>
+                      <AbsoluteConstraints x="580" y="20" width="120" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1543,13 +1533,13 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel47">
+                <Component class="javax.swing.JLabel" name="lbtime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Time :"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="580" y="40" width="40" height="-1"/>
+                      <AbsoluteConstraints x="580" y="40" width="120" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
