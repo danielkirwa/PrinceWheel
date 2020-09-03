@@ -5,6 +5,7 @@
  */
 package princewheel;
 
+import java.awt.event.ItemEvent;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
@@ -296,6 +297,11 @@ public class CreateAccount extends javax.swing.JFrame {
 
         btnshowpass.setBackground(new java.awt.Color(255, 255, 255));
         btnshowpass.setText("Show password");
+        btnshowpass.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btnshowpassStateChanged(evt);
+            }
+        });
         btnshowpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnshowpassActionPerformed(evt);
@@ -455,6 +461,22 @@ public class CreateAccount extends javax.swing.JFrame {
         // TODO add your handling code here:
         createaccountprogress();
     }//GEN-LAST:event_jpconfirmpasswordFocusLost
+
+    private void btnshowpassStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btnshowpassStateChanged
+        // TODO add your handling code here:
+        btnshowpass.addItemListener((ItemEvent e) ->{
+         if(e.getStateChange() == ItemEvent.SELECTED){
+             jppassword.setEchoChar((char) 0); 
+            jpconfirmpassword.setEchoChar((char) 0);
+         }else{
+            jppassword.setEchoChar('\u25cf'); 
+            jpconfirmpassword.setEchoChar('\u25cf');
+         }
+        });
+
+
+        
+    }//GEN-LAST:event_btnshowpassStateChanged
 
     /**
      * @param args the command line arguments

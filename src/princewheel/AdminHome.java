@@ -53,12 +53,18 @@ public class AdminHome extends javax.swing.JFrame {
     jpcarreports.setVisible(false);
     }
   final void loadiconsimages(){
-   ImageIcon  serch,upda,del,ad,hod;
+   ImageIcon  serch,upda,del,ad,hod,mes,load,app,rep,read;
    serch  = new ImageIcon("images/search.png");
    upda  = new ImageIcon("images/update.png");
    del  = new ImageIcon("images/delete.png");
    ad  = new ImageIcon("images/add.png");
    hod  = new ImageIcon("images/hold.png");
+   mes  = new ImageIcon("images/message.png");
+   load  = new ImageIcon("images/reload2.png");
+   app = new ImageIcon("images/ok.png");
+   rep = new ImageIcon("images/reply.png");
+   read = new ImageIcon("images/received.png");
+   
    btnsearch.setIcon(serch);
    btnsearchreport.setIcon(serch);
    btnsearchstaffreport.setIcon(serch);
@@ -67,6 +73,13 @@ public class AdminHome extends javax.swing.JFrame {
    btnupdatecar.setIcon(upda);
    btndeletecar.setIcon(del);
    btnholdcar.setIcon(hod);
+   btnadminsent.setIcon(mes);
+   btnadminapproved.setIcon(app);
+   btnadminreceived.setIcon(read);
+   btnadminreload.setIcon(load);
+   btnadmincancel.setIcon(del);
+   btnadminreply.setIcon(rep);
+   
    }
   final void  carreporttable(){
   DefaultTableModel dtm = new DefaultTableModel();
@@ -230,6 +243,29 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jporgreport = new javax.swing.JPanel();
+        jpdailyrequest = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        btnadminsent = new javax.swing.JButton();
+        btnadminreply = new javax.swing.JButton();
+        btnadminreceived = new javax.swing.JButton();
+        btnadminapproved = new javax.swing.JButton();
+        btnadmincancel = new javax.swing.JButton();
+        btnadminreload = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmaddcar = new javax.swing.JMenuItem();
@@ -882,7 +918,7 @@ public class AdminHome extends javax.swing.JFrame {
         jporgreport.setLayout(jporgreportLayout);
         jporgreportLayout.setHorizontalGroup(
             jporgreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1068, Short.MAX_VALUE)
+            .addGap(0, 1048, Short.MAX_VALUE)
         );
         jporgreportLayout.setVerticalGroup(
             jporgreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -890,7 +926,128 @@ public class AdminHome extends javax.swing.JFrame {
         );
 
         jPanel1.add(jporgreport);
-        jporgreport.setBounds(30, 80, 1080, 430);
+        jporgreport.setBounds(30, 80, 1060, 430);
+
+        jpdailyrequest.setBackground(new java.awt.Color(255, 255, 255));
+        jpdailyrequest.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Daily  Request", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
+        jpdailyrequest.setLayout(null);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jpdailyrequest.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 300, 1070, 120);
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel12.setLayout(null);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane4.setViewportView(jTextArea2);
+
+        jPanel12.add(jScrollPane4);
+        jScrollPane4.setBounds(20, 116, 370, 120);
+
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel56.setText("Message :");
+        jPanel12.add(jLabel56);
+        jLabel56.setBounds(80, 100, 230, 14);
+
+        jLabel57.setText("Sebject :");
+        jPanel12.add(jLabel57);
+        jLabel57.setBounds(30, 60, 230, 14);
+
+        jLabel58.setText("Date :");
+        jPanel12.add(jLabel58);
+        jLabel58.setBounds(30, 40, 230, 14);
+
+        jLabel59.setText("From :");
+        jPanel12.add(jLabel59);
+        jLabel59.setBounds(30, 20, 230, 14);
+
+        jpdailyrequest.add(jPanel12);
+        jPanel12.setBounds(10, 30, 420, 260);
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Reply "));
+        jPanel15.setMinimumSize(new java.awt.Dimension(420, 260));
+        jPanel15.setLayout(null);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jPanel15.add(jScrollPane3);
+        jScrollPane3.setBounds(30, 120, 390, 120);
+
+        jLabel62.setText("Date :");
+        jPanel15.add(jLabel62);
+        jLabel62.setBounds(50, 40, 230, 14);
+
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel60.setText("Reply :");
+        jPanel15.add(jLabel60);
+        jLabel60.setBounds(100, 100, 230, 14);
+
+        jLabel61.setText("Sebject :");
+        jPanel15.add(jLabel61);
+        jLabel61.setBounds(50, 60, 230, 14);
+
+        jLabel63.setText("To :");
+        jPanel15.add(jLabel63);
+        jLabel63.setBounds(50, 20, 230, 14);
+
+        btnadminsent.setBackground(new java.awt.Color(123, 193, 249));
+        btnadminsent.setText("sent");
+        jPanel15.add(btnadminsent);
+        btnadminsent.setBounds(309, 20, 120, 40);
+
+        jpdailyrequest.add(jPanel15);
+        jPanel15.setBounds(630, 30, 440, 250);
+
+        btnadminreply.setBackground(new java.awt.Color(123, 193, 249));
+        btnadminreply.setText("Reply");
+        jpdailyrequest.add(btnadminreply);
+        btnadminreply.setBounds(480, 40, 130, 40);
+
+        btnadminreceived.setBackground(new java.awt.Color(123, 193, 249));
+        btnadminreceived.setText("Received");
+        btnadminreceived.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnadminreceivedActionPerformed(evt);
+            }
+        });
+        jpdailyrequest.add(btnadminreceived);
+        btnadminreceived.setBounds(480, 90, 130, 40);
+
+        btnadminapproved.setBackground(new java.awt.Color(123, 193, 249));
+        btnadminapproved.setText("Approved");
+        jpdailyrequest.add(btnadminapproved);
+        btnadminapproved.setBounds(480, 140, 130, 40);
+
+        btnadmincancel.setBackground(new java.awt.Color(123, 193, 249));
+        btnadmincancel.setText("Canceled");
+        jpdailyrequest.add(btnadmincancel);
+        btnadmincancel.setBounds(480, 190, 130, 40);
+
+        btnadminreload.setBackground(new java.awt.Color(123, 193, 249));
+        btnadminreload.setText("Reroad");
+        jpdailyrequest.add(btnadminreload);
+        btnadminreload.setBounds(480, 240, 130, 40);
+
+        jPanel1.add(jpdailyrequest);
+        jpdailyrequest.setBounds(20, 80, 1090, 430);
 
         jMenu1.setText("Activity");
 
@@ -911,6 +1068,11 @@ public class AdminHome extends javax.swing.JFrame {
         jMenu1.add(jmcarpricing);
 
         jmdailyrequest.setText("Daily Request");
+        jmdailyrequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmdailyrequestActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmdailyrequest);
 
         jmlogout.setText("Logout");
@@ -977,7 +1139,7 @@ public class AdminHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1151, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1008,7 +1170,7 @@ public class AdminHome extends javax.swing.JFrame {
     private void jmaddcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmaddcarActionPerformed
         // TODO add your handling code here:
     jpstaffaccount.setVisible(false);
-    
+    jpdailyrequest.setVisible(false);
     jpcarpricing.setVisible(false);
     jpaddstaff.setVisible(false);
     jporgreport.setVisible(false);
@@ -1020,6 +1182,7 @@ public class AdminHome extends javax.swing.JFrame {
     private void jmcarpricingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmcarpricingActionPerformed
         // TODO add your handling code here:
           jpstaffaccount.setVisible(false);
+          jpdailyrequest.setVisible(false);
     jpaddstaff.setVisible(false);
     jporgreport.setVisible(false);
     jpstaffreport.setVisible(false);
@@ -1036,6 +1199,7 @@ public class AdminHome extends javax.swing.JFrame {
     jpstaffreport.setVisible(false);
     jpcarreports.setVisible(false);
     jpaddcar.setVisible(false);
+    jpdailyrequest.setVisible(false);
     jpcarpricing.setVisible(false);
     jpaddstaff.setVisible(true);
     }//GEN-LAST:event_jmaddstaffActionPerformed
@@ -1044,6 +1208,7 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
           jpstaffaccount.setVisible(false);
     jpaddstaff.setVisible(false);
+    jpdailyrequest.setVisible(false);
     jporgreport.setVisible(false);
     jpstaffreport.setVisible(false);
     jpaddcar.setVisible(false);
@@ -1055,6 +1220,7 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
             jpstaffaccount.setVisible(false);
     jpaddstaff.setVisible(false);
+    jpdailyrequest.setVisible(false);
     jpstaffreport.setVisible(false);
     jpaddcar.setVisible(false);
     jpcarpricing.setVisible(false);
@@ -1066,6 +1232,7 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
               jpstaffaccount.setVisible(false);
     jpaddstaff.setVisible(false);  
+    jpdailyrequest.setVisible(false);
     jpaddcar.setVisible(false);
     jpcarpricing.setVisible(false);
     jpcarreports.setVisible(false);
@@ -1077,6 +1244,7 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
               
     jpaddstaff.setVisible(false);  
+    jpdailyrequest.setVisible(false);
     jpaddcar.setVisible(false);
     jpcarpricing.setVisible(false);
     jpcarreports.setVisible(false);
@@ -1290,6 +1458,23 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    private void jmdailyrequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmdailyrequestActionPerformed
+        // TODO add your handling code here:
+        jpstaffaccount.setVisible(false);
+    jpaddcar.setVisible(false);
+    jpcarpricing.setVisible(false);
+    jpaddstaff.setVisible(false);
+    jporgreport.setVisible(false);
+    jpstaffreport.setVisible(false);
+    jpcarreports.setVisible(false);
+       jpdailyrequest.setVisible(true);
+       
+    }//GEN-LAST:event_jmdailyrequestActionPerformed
+
+    private void btnadminreceivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadminreceivedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnadminreceivedActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1327,6 +1512,12 @@ public class AdminHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnaddcar;
+    private javax.swing.JButton btnadminapproved;
+    private javax.swing.JButton btnadmincancel;
+    private javax.swing.JButton btnadminreceived;
+    private javax.swing.JButton btnadminreload;
+    private javax.swing.JButton btnadminreply;
+    private javax.swing.JButton btnadminsent;
     private javax.swing.JButton btndeletecar;
     private javax.swing.JButton btnholdcar;
     private javax.swing.JButton btnsearch;
@@ -1406,7 +1597,15 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1417,8 +1616,10 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1428,6 +1629,12 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -1463,6 +1670,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jpaddstaff;
     private javax.swing.JPanel jpcarpricing;
     private javax.swing.JPanel jpcarreports;
+    private javax.swing.JPanel jpdailyrequest;
     private javax.swing.JPanel jporgreport;
     private javax.swing.JPanel jpstaffaccount;
     private javax.swing.JPanel jpstaffreceipt;
