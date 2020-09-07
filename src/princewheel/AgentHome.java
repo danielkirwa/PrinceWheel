@@ -20,6 +20,8 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -72,23 +74,37 @@ public class AgentHome extends javax.swing.JFrame {
     }
     final void loadibtnicon(){
         // method to add icons to buttons
-        ImageIcon srch1,srch2,clear1,requ;
+        ImageIcon srch1,upd,clear1,requ,snt,edt,rep,prof;
     srch1 = new ImageIcon("images/search.png");
-    srch2 = new ImageIcon("images/search.png");
+    upd = new ImageIcon("images/profile2.png");
     clear1 = new ImageIcon("images/ok.png");
     requ = new ImageIcon("images/request.png");
+    snt = new ImageIcon("images/message.png");
+    edt = new ImageIcon("images/update.png");
+    rep = new ImageIcon("images/reply.png");
+    prof =new ImageIcon("images/profile.png");
+    
+    
     btnsearchexd.setIcon(srch1);
-    btnsearchclear.setIcon(srch2);
+    btnsearchclear.setIcon(srch1);
     btnclearlease.setIcon(clear1);
-    btnsearchcar.setIcon(srch2);
+    btnsearchcar.setIcon(srch1);
     btnrequestexd.setIcon(requ);
     btncheckprice.setIcon(requ);
     btnsearchclientreceipt.setIcon(srch1);
+    btnagentsent.setIcon(snt);
+    btnagentupdateprofile.setIcon(upd);
+    btnagenteditprofile.setIcon(edt);
+    btnagentsent.setIcon(rep);
+    btnsgentsubmtpassreset.setIcon(clear1);
+    btntogoprofile.setIcon(prof);
+    
     }
     final void loaddate(){
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         lbdate.setText("Date :" + sdf.format(date));
+        lbmsgdate.setText("Date :" + sdf.format(date));
     }
      final void loadtime(){
         new Timer (0, (ActionEvent ae) -> {
@@ -165,17 +181,17 @@ public class AgentHome extends javax.swing.JFrame {
         jprequest = new javax.swing.JPanel();
         jpmyrequest = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbagentrequestsubject = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textagentmessage = new javax.swing.JTextArea();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtagentrequestsubject = new javax.swing.JTextField();
+        btnagentsent = new javax.swing.JButton();
+        lbmsgdate = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnagentupdateprofile = new javax.swing.JButton();
+        btnagenteditprofile = new javax.swing.JButton();
         btntogoprofile = new javax.swing.JButton();
         jpmyprofile = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
@@ -198,7 +214,7 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel59 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
         jLabel60 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        btnsgentsubmtpassreset = new javax.swing.JButton();
         jLabel61 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
@@ -275,6 +291,7 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jTextField15 = new javax.swing.JTextField();
         jpcarreport = new javax.swing.JPanel();
+        lblogedaccount = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmleasenow = new javax.swing.JMenuItem();
@@ -533,28 +550,42 @@ public class AgentHome extends javax.swing.JFrame {
 
         jLabel44.setText("Select Request:");
         jpmyrequest.add(jLabel44);
-        jLabel44.setBounds(90, 20, 110, 14);
+        jLabel44.setBounds(50, 20, 110, 14);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Car Request", "Repairs", "Advance", "Leave", "Day Out" }));
-        jpmyrequest.add(jComboBox1);
-        jComboBox1.setBounds(70, 50, 140, 20);
+        cmbagentrequestsubject.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Car Request", "Repairs", "Advance", "Leave", "Day Out" }));
+        jpmyrequest.add(cmbagentrequestsubject);
+        cmbagentrequestsubject.setBounds(50, 50, 140, 20);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        textagentmessage.setColumns(20);
+        textagentmessage.setRows(5);
+        jScrollPane2.setViewportView(textagentmessage);
 
         jpmyrequest.add(jScrollPane2);
-        jScrollPane2.setBounds(50, 120, 660, 160);
+        jScrollPane2.setBounds(50, 120, 660, 150);
 
         jLabel47.setText("Request Message :");
         jpmyrequest.add(jLabel47);
-        jLabel47.setBounds(90, 90, 110, 14);
+        jLabel47.setBounds(310, 100, 110, 14);
 
         jLabel48.setText("Other Request :");
         jpmyrequest.add(jLabel48);
-        jLabel48.setBounds(400, 20, 100, 14);
-        jpmyrequest.add(jTextField1);
-        jTextField1.setBounds(510, 20, 200, 20);
+        jLabel48.setBounds(250, 20, 100, 14);
+        jpmyrequest.add(txtagentrequestsubject);
+        txtagentrequestsubject.setBounds(350, 20, 200, 20);
+
+        btnagentsent.setBackground(new java.awt.Color(123, 193, 249));
+        btnagentsent.setText("Send");
+        btnagentsent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagentsentActionPerformed(evt);
+            }
+        });
+        jpmyrequest.add(btnagentsent);
+        btnagentsent.setBounds(600, 10, 160, 40);
+
+        lbmsgdate.setText("Date :");
+        jpmyrequest.add(lbmsgdate);
+        lbmsgdate.setBounds(600, 60, 160, 20);
 
         jprequest.add(jpmyrequest);
         jpmyrequest.setBounds(120, 70, 770, 310);
@@ -564,25 +595,15 @@ public class AgentHome extends javax.swing.JFrame {
         jprequest.add(jLabel43);
         jLabel43.setBounds(60, 20, 360, 30);
 
-        jButton1.setBackground(new java.awt.Color(123, 193, 249));
-        jButton1.setText("Update");
-        jprequest.add(jButton1);
-        jButton1.setBounds(590, 400, 120, 40);
+        btnagentupdateprofile.setBackground(new java.awt.Color(123, 193, 249));
+        btnagentupdateprofile.setText("Update");
+        jprequest.add(btnagentupdateprofile);
+        btnagentupdateprofile.setBounds(530, 400, 220, 40);
 
-        jButton2.setBackground(new java.awt.Color(123, 193, 249));
-        jButton2.setText("Edit");
-        jprequest.add(jButton2);
-        jButton2.setBounds(430, 400, 120, 40);
-
-        jButton3.setBackground(new java.awt.Color(123, 193, 249));
-        jButton3.setText("Reset");
-        jprequest.add(jButton3);
-        jButton3.setBounds(260, 400, 120, 40);
-
-        jButton4.setBackground(new java.awt.Color(123, 193, 249));
-        jButton4.setText("Send");
-        jprequest.add(jButton4);
-        jButton4.setBounds(100, 400, 120, 40);
+        btnagenteditprofile.setBackground(new java.awt.Color(123, 193, 249));
+        btnagenteditprofile.setText("Edit");
+        jprequest.add(btnagenteditprofile);
+        btnagenteditprofile.setBounds(280, 400, 220, 40);
 
         btntogoprofile.setBackground(new java.awt.Color(123, 193, 249));
         btntogoprofile.setText("Profile");
@@ -661,15 +682,15 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel12.add(jLabel60);
         jLabel60.setBounds(10, 100, 100, 14);
 
-        jButton6.setBackground(new java.awt.Color(123, 193, 249));
-        jButton6.setText("Submit");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnsgentsubmtpassreset.setBackground(new java.awt.Color(123, 193, 249));
+        btnsgentsubmtpassreset.setText("Submit");
+        btnsgentsubmtpassreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnsgentsubmtpassresetActionPerformed(evt);
             }
         });
-        jPanel12.add(jButton6);
-        jButton6.setBounds(60, 170, 220, 30);
+        jPanel12.add(btnsgentsubmtpassreset);
+        btnsgentsubmtpassreset.setBounds(60, 170, 220, 40);
 
         jLabel61.setText("Confirm Password :");
         jPanel12.add(jLabel61);
@@ -1025,6 +1046,15 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel1.add(jpcarreport);
         jpcarreport.setBounds(40, 20, 1020, 480);
 
+        lblogedaccount.setBackground(new java.awt.Color(255, 255, 255));
+        lblogedaccount.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblogedaccount.setText("Agent");
+        lblogedaccount.setOpaque(true);
+        jPanel1.add(lblogedaccount);
+        lblogedaccount.setBounds(1000, 514, 150, 20);
+
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         jMenu1.setText("Lease Dashboard");
 
         jmleasenow.setText("Lease Now");
@@ -1087,11 +1117,11 @@ public class AgentHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1152, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1162, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
         );
 
         pack();
@@ -1127,6 +1157,8 @@ public class AgentHome extends javax.swing.JFrame {
     jpleasenow.setVisible(false);
     jpcarreport.setVisible(false);
     jpclientreport.setVisible(false);
+    btnagentupdateprofile.setVisible(false);
+        btnagenteditprofile.setVisible(false);
     }//GEN-LAST:event_jmrequestActionPerformed
 
     private void jmclearleaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmclearleaseActionPerformed
@@ -1391,9 +1423,9 @@ public class AgentHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnleasecarActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnsgentsubmtpassresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsgentsubmtpassresetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnsgentsubmtpassresetActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
@@ -1411,16 +1443,66 @@ public class AgentHome extends javax.swing.JFrame {
         // TODO add your handling code here:
       
         if(jpmyprofile.isVisible()){
+            ImageIcon prof;
         btntogoprofile.setText("Profile");
+         prof = new ImageIcon("images/profile.png");
+           btntogoprofile.setIcon(prof);
         jpmyprofile.setVisible(false);
+        btnagentupdateprofile.setVisible(false);
+        btnagenteditprofile.setVisible(false);
         jpmyrequest.setVisible(true);
+        
         }else{
+            ImageIcon requ;
            btntogoprofile.setText("Request");
+           requ = new ImageIcon("images/reply.png");
+           btntogoprofile.setIcon(requ);
+           jpmyrequest.setVisible(false);
         jpmyprofile.setVisible(true); 
-        jpmyrequest.setVisible(false);
+         btnagentupdateprofile.setVisible(true);
+          btnagenteditprofile.setVisible(true);
         }
          
     }//GEN-LAST:event_btntogoprofileActionPerformed
+
+    private void btnagentsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagentsentActionPerformed
+        if(!"".equals(textagentmessage.getText())){ 
+        try {
+             String subject,message,sender;
+             if(!"".equals(txtagentrequestsubject.getText())){
+                 subject = txtagentrequestsubject.getText();
+             }else{
+                 
+                 subject = (String)cmbagentrequestsubject.getSelectedItem();
+             }    // get date and time 
+             String date = lbmsgdate.getText();
+             // get message
+             message = textagentmessage.getText();
+             // get message sender
+             sender = lblogedaccount.getText();
+             // attarch status
+             String status = "Pendding";
+             con = DriverManager.getConnection(url,username,password);
+             st = con.createStatement();
+             String sqllogmessage = "INSERT INTO tblrequestlog (SENDER,DATE,SUBJECT,MESSAGE,STATUS) VALUES ('"+sender+"','"+date+"','"+subject+"','"+message+"','"+status+"')";
+             st.execute(sqllogmessage);
+             JOptionPane.showMessageDialog(null, "<HTML><i style=\"color: green; font-size: 12px;\">Request Sent Succes</i></HTML>","PRINCE WHEEL",JOptionPane.INFORMATION_MESSAGE);
+             // clear request form
+             textagentmessage.setText("");
+             txtagentrequestsubject.setText("");
+             
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null,"error"+ ex);
+         }
+        }else{
+            JOptionPane.showMessageDialog(null, "<HTML><i style=\"color: red; font-size: 12px;\">Fail can't sent empty message</i></HTML>","PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+       
+   
+        
+    }//GEN-LAST:event_btnagentsentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1458,6 +1540,9 @@ public class AgentHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnagenteditprofile;
+    private javax.swing.JButton btnagentsent;
+    private javax.swing.JButton btnagentupdateprofile;
     private javax.swing.JButton btncheckprice;
     private javax.swing.JButton btnclearlease;
     private javax.swing.JButton btnextendlease;
@@ -1468,15 +1553,11 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JButton btnsearchclear;
     private javax.swing.JButton btnsearchclientreceipt;
     private javax.swing.JButton btnsearchexd;
+    private javax.swing.JButton btnsgentsubmtpassreset;
     private javax.swing.JButton btntogoprofile;
+    private javax.swing.JComboBox<String> cmbagentrequestsubject;
     private javax.swing.JComboBox<String> cmbcartype;
     private javax.swing.JComboBox<String> cmbclientgender;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
@@ -1560,8 +1641,6 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField18;
@@ -1615,8 +1694,12 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JLabel lbleaserate;
     private javax.swing.JLabel lbleasetotalcost;
     private javax.swing.JLabel lbleasetype;
+    private javax.swing.JLabel lblogedaccount;
+    private javax.swing.JLabel lbmsgdate;
     private javax.swing.JLabel lbtime;
     private javax.swing.JTable tblavailablecar;
+    private javax.swing.JTextArea textagentmessage;
+    private javax.swing.JTextField txtagentrequestsubject;
     private javax.swing.JTextField txtcarno;
     private javax.swing.JTextField txtcarstatus;
     private javax.swing.JTextField txtcautionamount;

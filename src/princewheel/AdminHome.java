@@ -11,6 +11,7 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +42,8 @@ public class AdminHome extends javax.swing.JFrame {
         hidecomponets();
         loadiconsimages();
         carreporttable();
+        //dailyreporttable();
+        loaddailyrequest();
         
     }
    final void hidecomponets(){
@@ -92,6 +95,51 @@ public class AdminHome extends javax.swing.JFrame {
   dtm.addColumn("Lease Price");
   dtm.addColumn("Discount");
    tblcarreport.setModel(dtm);
+  }
+  final void dailyreporttable(){
+      DefaultTableModel dtm = new DefaultTableModel();
+      dtm.addColumn("Request From");
+      dtm.addColumn("Request Subject");
+      dtm.addColumn("Date  on");
+      dtm.addColumn("Request Message");
+      tbldailyrequest.setModel(dtm);
+  }
+  final void loaddailyrequest(){
+      
+        // SELECT REQUEST
+        
+        //create table 
+        DefaultTableModel dtm = new DefaultTableModel();
+      dtm.addColumn("Request From");
+      dtm.addColumn("Send Date");
+      dtm.addColumn("Request Subject");
+      dtm.addColumn("Request Message");
+      tbldailyrequest.setModel(dtm);
+    // try select pedding request
+        try{
+                con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String selectecar = "SELECT * FROM tblrequestlog WHERE STATUS = ? ";
+            pst = con.prepareStatement(selectecar);
+            pst.setString(1, (String) "Pendding");
+            rs = pst.executeQuery();
+                  
+            while(rs.next()){
+               String sender = rs.getString("SENDER");
+               String date = rs.getString("DATE");
+               String subject = rs.getString("SUBJECT");
+               String message = rs.getString("MESSAGE");
+               
+               
+               //ARRAY DATA TO DISPLAY
+               String tbldata []= {sender,date,subject,message};
+               DefaultTableModel dtmdata = (DefaultTableModel)tbldailyrequest.getModel();
+               dtmdata.addRow(tbldata);
+            }
+        }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null,"Error" + ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+        }
+      
   }
  
     
@@ -245,22 +293,23 @@ public class AdminHome extends javax.swing.JFrame {
         jporgreport = new javax.swing.JPanel();
         jpdailyrequest = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbldailyrequest = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        tareqestreceived = new javax.swing.JTextArea();
         jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
+        lbrequestsubject = new javax.swing.JLabel();
+        lbrequestdate = new javax.swing.JLabel();
+        lbrequestfrom = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel62 = new javax.swing.JLabel();
+        lbreqestdaterepley = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
+        lbreplysubject = new javax.swing.JLabel();
+        lbmessageto = new javax.swing.JLabel();
         btnadminsent = new javax.swing.JButton();
+        lbdate = new javax.swing.JLabel();
         btnadminreply = new javax.swing.JButton();
         btnadminreceived = new javax.swing.JButton();
         btnadminapproved = new javax.swing.JButton();
@@ -932,7 +981,7 @@ public class AdminHome extends javax.swing.JFrame {
         jpdailyrequest.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Daily  Request", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Wide Latin", 0, 12))); // NOI18N
         jpdailyrequest.setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbldailyrequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -943,7 +992,12 @@ public class AdminHome extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        tbldailyrequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbldailyrequestMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbldailyrequest);
 
         jpdailyrequest.add(jScrollPane2);
         jScrollPane2.setBounds(10, 300, 1070, 120);
@@ -952,9 +1006,9 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel12.setLayout(null);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
+        tareqestreceived.setColumns(20);
+        tareqestreceived.setRows(5);
+        jScrollPane4.setViewportView(tareqestreceived);
 
         jPanel12.add(jScrollPane4);
         jScrollPane4.setBounds(20, 116, 370, 120);
@@ -964,17 +1018,17 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel12.add(jLabel56);
         jLabel56.setBounds(80, 100, 230, 14);
 
-        jLabel57.setText("Sebject :");
-        jPanel12.add(jLabel57);
-        jLabel57.setBounds(30, 60, 230, 14);
+        lbrequestsubject.setText("Sebject :");
+        jPanel12.add(lbrequestsubject);
+        lbrequestsubject.setBounds(30, 60, 230, 14);
 
-        jLabel58.setText("Date :");
-        jPanel12.add(jLabel58);
-        jLabel58.setBounds(30, 40, 230, 14);
+        lbrequestdate.setText("Date :");
+        jPanel12.add(lbrequestdate);
+        lbrequestdate.setBounds(30, 40, 230, 14);
 
-        jLabel59.setText("From :");
-        jPanel12.add(jLabel59);
-        jLabel59.setBounds(30, 20, 230, 14);
+        lbrequestfrom.setText("From :");
+        jPanel12.add(lbrequestfrom);
+        lbrequestfrom.setBounds(30, 20, 230, 14);
 
         jpdailyrequest.add(jPanel12);
         jPanel12.setBounds(10, 30, 420, 260);
@@ -991,33 +1045,42 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel15.add(jScrollPane3);
         jScrollPane3.setBounds(30, 120, 390, 120);
 
-        jLabel62.setText("Date :");
-        jPanel15.add(jLabel62);
-        jLabel62.setBounds(50, 40, 230, 14);
+        lbreqestdaterepley.setText("Date :");
+        jPanel15.add(lbreqestdaterepley);
+        lbreqestdaterepley.setBounds(50, 40, 230, 14);
 
         jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel60.setText("Reply :");
         jPanel15.add(jLabel60);
         jLabel60.setBounds(100, 100, 230, 14);
 
-        jLabel61.setText("Sebject :");
-        jPanel15.add(jLabel61);
-        jLabel61.setBounds(50, 60, 230, 14);
+        lbreplysubject.setText("Sebject :");
+        jPanel15.add(lbreplysubject);
+        lbreplysubject.setBounds(50, 60, 230, 14);
 
-        jLabel63.setText("To :");
-        jPanel15.add(jLabel63);
-        jLabel63.setBounds(50, 20, 230, 14);
+        lbmessageto.setText("To :");
+        jPanel15.add(lbmessageto);
+        lbmessageto.setBounds(50, 20, 230, 14);
 
         btnadminsent.setBackground(new java.awt.Color(123, 193, 249));
         btnadminsent.setText("sent");
         jPanel15.add(btnadminsent);
         btnadminsent.setBounds(309, 20, 120, 40);
 
+        lbdate.setText("Date :");
+        jPanel15.add(lbdate);
+        lbdate.setBounds(310, 70, 110, 14);
+
         jpdailyrequest.add(jPanel15);
         jPanel15.setBounds(630, 30, 440, 250);
 
         btnadminreply.setBackground(new java.awt.Color(123, 193, 249));
         btnadminreply.setText("Reply");
+        btnadminreply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnadminreplyActionPerformed(evt);
+            }
+        });
         jpdailyrequest.add(btnadminreply);
         btnadminreply.setBounds(480, 40, 130, 40);
 
@@ -1043,6 +1106,11 @@ public class AdminHome extends javax.swing.JFrame {
 
         btnadminreload.setBackground(new java.awt.Color(123, 193, 249));
         btnadminreload.setText("Reroad");
+        btnadminreload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnadminreloadActionPerformed(evt);
+            }
+        });
         jpdailyrequest.add(btnadminreload);
         btnadminreload.setBounds(480, 240, 130, 40);
 
@@ -1475,6 +1543,71 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnadminreceivedActionPerformed
 
+    private void tbldailyrequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbldailyrequestMouseClicked
+        // TODO add your handling code here:
+        try{
+         DefaultTableModel dtm = (DefaultTableModel)tbldailyrequest.getModel();
+        int selectedrowindex = tbldailyrequest.getSelectedRow();
+        lbrequestdate.setText(dtm.getValueAt(selectedrowindex, 1).toString());
+        tareqestreceived.setText(dtm.getValueAt(selectedrowindex, 3).toString());
+        lbrequestsubject.setText(dtm.getValueAt(selectedrowindex, 2).toString());
+        lbrequestfrom.setText(dtm.getValueAt(selectedrowindex, 0).toString());
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_tbldailyrequestMouseClicked
+
+    private void btnadminreplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadminreplyActionPerformed
+        // TODO add your handling code here:
+        //get reply date
+          java.util.Date date = new java.util.Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        lbdate.setText("Date :" + sdf.format(date));      
+        
+        // hook message
+        lbmessageto.setText(lbrequestfrom.getText());
+        lbreqestdaterepley.setText(lbdate.getText());
+        lbreplysubject.setText(lbrequestsubject.getText());
+        
+    }//GEN-LAST:event_btnadminreplyActionPerformed
+
+    private void btnadminreloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadminreloadActionPerformed
+        // TODO add your handling code here:
+         // SELECT REQUEST
+        
+        //create table 
+        DefaultTableModel dtm = new DefaultTableModel();
+      dtm.addColumn("Request From");
+      dtm.addColumn("Sent Date");
+      dtm.addColumn("Request Subject");
+      dtm.addColumn("Request Message");
+      tbldailyrequest.setModel(dtm);
+    // try select pedding request
+        try{
+                con = DriverManager.getConnection(url,username,password);
+            st = con.createStatement();
+            String selectecar = "SELECT * FROM tblrequestlog WHERE STATUS = ? ";
+            pst = con.prepareStatement(selectecar);
+            pst.setString(1, (String) "Pendding");
+            rs = pst.executeQuery();
+                  
+            while(rs.next()){
+               String sender = rs.getString("SENDER");
+               String date = rs.getString("DATE");
+               String subject = rs.getString("SUBJECT");
+               String message = rs.getString("MESSAGE");
+               
+               
+               //ARRAY DATA TO DISPLAY
+               String tbldata []= {sender,date,subject,message};
+               DefaultTableModel dtmdata = (DefaultTableModel)tbldailyrequest.getModel();
+               dtmdata.addRow(tbldata);
+            }
+        }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null,"Error" + ex,"PRINCE WHEEL",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnadminreloadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1598,14 +1731,8 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1632,9 +1759,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -1676,10 +1801,19 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel jpstaffreceipt;
     private javax.swing.JPanel jpstaffreport;
     private javax.swing.JLabel lbcoution;
+    private javax.swing.JLabel lbdate;
     private javax.swing.JLabel lbdiscount;
+    private javax.swing.JLabel lbmessageto;
     private javax.swing.JLabel lbprice;
+    private javax.swing.JLabel lbreplysubject;
+    private javax.swing.JLabel lbreqestdaterepley;
+    private javax.swing.JLabel lbrequestdate;
+    private javax.swing.JLabel lbrequestfrom;
+    private javax.swing.JLabel lbrequestsubject;
     private javax.swing.JLabel lbtype;
+    private javax.swing.JTextArea tareqestreceived;
     private javax.swing.JTable tblcarreport;
+    private javax.swing.JTable tbldailyrequest;
     private javax.swing.JTextField txtcarcapacity;
     private javax.swing.JTextField txtcarno;
     private javax.swing.JTextField txtcarnoreport;
