@@ -421,6 +421,7 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel22.setBounds(20, 220, 80, 14);
 
         jdleasedate.setDateFormatString("dd-MM-yyyy");
+        jdleasedate.setMinSelectableDate(new java.util.Date(-62135776726000L));
         jPanel4.add(jdleasedate);
         jdleasedate.setBounds(110, 190, 190, 20);
 
