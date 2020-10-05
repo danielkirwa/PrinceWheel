@@ -291,6 +291,14 @@ public class AgentHome extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jTextField15 = new javax.swing.JTextField();
         jpcarreport = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel64 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel63 = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel62 = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel65 = new javax.swing.JLabel();
         lblogedaccount = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -1033,19 +1041,53 @@ public class AgentHome extends javax.swing.JFrame {
         jPanel1.add(jpclientreport);
         jpclientreport.setBounds(190, 20, 800, 470);
 
-        javax.swing.GroupLayout jpcarreportLayout = new javax.swing.GroupLayout(jpcarreport);
-        jpcarreport.setLayout(jpcarreportLayout);
-        jpcarreportLayout.setHorizontalGroup(
-            jpcarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
-        );
-        jpcarreportLayout.setVerticalGroup(
-            jpcarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
-        );
+        jpcarreport.setBackground(new java.awt.Color(255, 255, 255));
+        jpcarreport.setMinimumSize(new java.awt.Dimension(1100, 490));
+        jpcarreport.setPreferredSize(new java.awt.Dimension(1100, 490));
+        jpcarreport.setLayout(null);
+
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel13.setLayout(new java.awt.BorderLayout());
+
+        jLabel64.setText("Cars leased per type");
+        jPanel13.add(jLabel64, java.awt.BorderLayout.CENTER);
+
+        jpcarreport.add(jPanel13);
+        jPanel13.setBounds(10, 10, 1080, 130);
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel14.setLayout(new java.awt.BorderLayout());
+
+        jLabel63.setText("Leasing information");
+        jPanel14.add(jLabel63, java.awt.BorderLayout.CENTER);
+
+        jpcarreport.add(jPanel14);
+        jPanel14.setBounds(10, 150, 370, 330);
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel15.setLayout(new java.awt.BorderLayout());
+
+        jLabel62.setText("Your rating actitvit/rating/earning");
+        jPanel15.add(jLabel62, java.awt.BorderLayout.CENTER);
+
+        jpcarreport.add(jPanel15);
+        jPanel15.setBounds(390, 150, 440, 330);
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel16.setLayout(new java.awt.BorderLayout());
+
+        jLabel65.setText("Other parameter");
+        jPanel16.add(jLabel65, java.awt.BorderLayout.CENTER);
+
+        jpcarreport.add(jPanel16);
+        jPanel16.setBounds(840, 150, 250, 330);
 
         jPanel1.add(jpcarreport);
-        jpcarreport.setBounds(40, 20, 1020, 480);
+        jpcarreport.setBounds(40, 20, 1100, 490);
 
         lblogedaccount.setBackground(new java.awt.Color(255, 255, 255));
         lblogedaccount.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
@@ -1619,6 +1661,10 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1629,6 +1675,10 @@ public class AgentHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
